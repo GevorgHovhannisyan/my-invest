@@ -1,5 +1,9 @@
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/fonts';
 @import 'helpers/general';
 @import 'pages/header-footer/header.scss';
 @import 'pages/header-footer/footer.scss';
-@import '../fonts/mardoto/stylesheet.css';
-@import '../fonts/monserat-arm/stylesheet.css';
+@import 'pages/home/home.scss';
+@import 'pages/home/win.scss';
+@import 'pages/home/stock-bond.scss';
