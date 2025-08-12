@@ -1,0 +1,47 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 42px;
+    
+  
+    .social-links {
+      ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        color: white;
+  
+        li {
+          margin-right: 12px;
+          border: 1px solid #ffffff4d;
+          padding: 9.5px;
+          border-radius: 8px;
+        }
+      }
+    }
+  
+    .academy {
+      button {
+        background: linear-gradient(
+          96.65deg,
+          rgba(114, 191, 68, 0.245) 10.26%,
+          rgba(114, 191, 68, 0.35) 59.27%,
+          rgba(114, 191, 68, 0.35) 120.5%
+        );
+        width: 134px;
+        padding: 6px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        span {
+          color: white;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 24px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
