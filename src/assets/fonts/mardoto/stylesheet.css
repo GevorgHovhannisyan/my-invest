@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-BoldItalic.eot');
+    src: url('Mardoto-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-BoldItalic.woff') format('woff'),
+        url('Mardoto-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-Thin.eot');
+    src: url('Mardoto-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-Thin.woff') format('woff'),
+        url('Mardoto-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-Medium.eot');
+    src: url('Mardoto-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-Medium.woff') format('woff'),
+        url('Mardoto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-BlackItalic.eot');
+    src: url('Mardoto-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-BlackItalic.woff') format('woff'),
+        url('Mardoto-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-Italic.eot');
+    src: url('Mardoto-Italic.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-Italic.woff') format('woff'),
+        url('Mardoto-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-Black.eot');
+    src: url('Mardoto-Black.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-Black.woff') format('woff'),
+        url('Mardoto-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-MediumItalic.eot');
+    src: url('Mardoto-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-MediumItalic.woff') format('woff'),
+        url('Mardoto-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-Bold.eot');
+    src: url('Mardoto-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-Bold.woff') format('woff'),
+        url('Mardoto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-LightItalic.eot');
+    src: url('Mardoto-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-LightItalic.woff') format('woff'),
+        url('Mardoto-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-Regular.eot');
+    src: url('Mardoto-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-Regular.woff') format('woff'),
+        url('Mardoto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-Light.eot');
+    src: url('Mardoto-Light.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-Light.woff') format('woff'),
+        url('Mardoto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mardoto';
+    src: url('Mardoto-ThinItalic.eot');
+    src: url('Mardoto-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('Mardoto-ThinItalic.woff') format('woff'),
+        url('Mardoto-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
