@@ -1,0 +1,41 @@
+.bond-stock-info {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 104px;
+  height: 182px;
+}
+.info-block {
+  display: flex;
+  flex-direction: column;
+  width: 463px;
+
+  img {
+    width: 48px;
+  }
+  .title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    margin-top: 16px;
+  }
+  .description {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    color: #737373;
+  }
+}
+
+.middle-border {
+  width: 1px;
+  height: 222px;
+  background: linear-gradient(
+    360deg,
+    rgba(0, 0, 0, 0) 0%,
+    #000000 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  margin: 0 24px; // space between blocks, adjust as needed
+}

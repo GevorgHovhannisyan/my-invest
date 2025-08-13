@@ -1,0 +1,30 @@
+.container {
+  max-width: 1614px;
+  width: 100%;
+  margin: 0 auto;
+  
+  @include mediaTo($size1366) {
+    max-width: 1204px;
+  }
+   
+  @include mediaTo($size768) {
+    max-width: 718px;
+  }
+
+  @include mediaTo($size480) {
+    max-width: 380px;
+  }
+}
+
+.title {
+  font-family: "Montserrat arm";
+  font-weight: 600;
+}
+
+.mardoto {
+  font-family: "Mardoto";
+}
+
+ul {
+  list-style-type: none;
+}
