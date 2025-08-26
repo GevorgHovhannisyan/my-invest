@@ -3,10 +3,10 @@
     color: var(--Brand-500, #72bf44);
     text-align: center;
     /* Caption */
-    font-family: "Mardoto";
+    font-family: $regularMar;
     font-size: 14px;
     font-style: normal;
-    font-weight: 500;
+    
     line-height: 24px; /* 171.429% */
     letter-spacing: 3.5px;
     text-transform: uppercase;
@@ -15,10 +15,10 @@
   .title {
     color: var(--Black, #000);
     text-align: center;
-    font-family: "Montserrat arm";
+    font-family: $semibold;
     font-size: 46px;
     font-style: normal;
-    font-weight: 600;
+    
     line-height: 54px; /* 117.391% */
     letter-spacing: -1.84px;
   }
@@ -62,20 +62,20 @@
 
     .benefit-title {
       color: #000;
-      font-family: "Montserrat arm";
+      font-family: $medium;
       font-size: 18px;
       font-style: normal;
-      font-weight: 500;
+      
       line-height: 28px;
       margin-top: 16px;
     }
 
     .description {
       color: var(--Gray-WEB-UI-500, #737373);
-      font-family: Mardoto;
+      font-family: $regularMar;
       font-size: 16px;
       font-style: normal;
-      font-weight: 400;
+      
       line-height: 23px;
       margin-top: 10px;
     }

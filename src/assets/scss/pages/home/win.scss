@@ -46,20 +46,20 @@
     letter-spacing: 4px;
     line-height: 24px;
     margin-bottom: 16px;
-    font-weight: 500;
+    
   }
 
   .card-title {
     font-size: 38px;
-    font-weight: 400;
+    
     margin-bottom: 18px;
     color: #111;
     line-height: 40px;
 
-    font-family: "Montserrat arm";
+    font-family: $medium;
 
     span {
-      font-weight: 600;
+      
     }
   }
 
@@ -67,7 +67,7 @@
     color: #737373;
     font-size: 18px;
     line-height: 26px;
-    font-weight: 400;
+    
   }
 
   .card-btn {
@@ -79,7 +79,7 @@
     border-radius: 18px;
     cursor: pointer;
     font-family: inherit;
-    font-weight: 600;
+    
     transition: background 0.2s;
     margin-top: 35px;
     font-size: 14px;

@@ -1,5 +1,6 @@
+@use 'helpers/variables' as *;
+@import 'helpers/fonts';
 @import 'helpers/general';
 @import 'pages/header-footer/header.scss';
 @import 'pages/header-footer/footer.scss';
-@import '../fonts/mardoto/stylesheet.css';
-@import '../fonts/monserat-arm/stylesheet.css';
+/* Old font css imports replaced by local @font-face in helpers/fonts */
