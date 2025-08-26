@@ -1,10 +1,10 @@
-$regular: 'montserratarm';
-$light: 'montserratarm-light';
-$medium: 'montserratarm-medium';
-$semibold: 'montserratarm-semibold';
-$bold: 'montserratarm-bold';
+$regular: 'montserrat', 'montserratarm'; //400
+$bold: 'montserrat-bold', 'montserratarm-bold'; //700
+$medium: 'montserrat-medium', 'montserratarm-medium'; //500
+$light: 'montserrat-light', 'montserratarm-light'; //300    
+$semibold: 'montserrat-semibold', 'montserratarm-semibold'; //600
 
 $regularMar: 'mardoto';
-$lightMar: 'mardoto-light';
-$mediumMar: 'mardoto-medium';
 $boldMar: 'mardoto-bold';
+$mediumMar: 'mardoto-medium';
+$lightMar: 'mardoto-light';

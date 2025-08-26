@@ -1,3 +1,47 @@
+@font-face {
+    font-family: 'montserrat';
+    font-display: swap;
+    src: url('../../fonts/Montserrat-Regular/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Montserrat-Regular/Montserrat-Regular.otf')  format('opentype'),
+    url('../../fonts/Montserrat-Regular/Montserrat-Regular.woff') format('woff'),
+    url('../../fonts/Montserrat-Regular/Montserrat-Regular.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    font-display: swap;
+    src: url('../../fonts/Montserrat-Bold/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Montserrat-Bold/Montserrat-Bold.otf')  format('opentype'),
+    url('../../fonts/Montserrat-Bold/Montserrat-Bold.woff') format('woff'),
+    url('../../fonts/Montserrat-Bold/Montserrat-Bold.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat-medium';
+    font-display: swap;
+    src: url('../../fonts/Montserrat-Medium/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Montserrat-Medium/Montserrat-Medium.otf') format('opentype'),
+    url('../../fonts/Montserrat-Medium/Montserrat-Medium.woff') format('woff'),
+    url('../../fonts/Montserrat-Medium/Montserrat-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat-light';
+    font-display: swap;
+    src: url('../../fonts/Montserrat-Light/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Montserrat-Light/Montserrat-Light.otf') format('opentype'),
+    url('../../fonts/Montserrat-Light/Montserrat-Light.woff') format('woff'),
+    url('../../fonts/Montserrat-Light/Montserrat-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Montserrat Armenian family */
 @font-face {
     font-family: 'montserratarm';
