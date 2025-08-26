@@ -1,0 +1,249 @@
+.academy {
+    padding-top: 150px;
+
+
+  .academy-container-inner {
+    padding: 0 15px;
+  }
+
+  .academy-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+
+    @include mediaTo($size1366) {
+      gap: 32px;
+    }
+
+    @include mediaTo($size896) {
+      gap: 16px;
+    }
+
+    @include mediaTo($size768) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .academy-blocks-item {
+    border-radius: 56px;
+    max-width: 756px;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-color: black;
+    color: white;
+
+    &.academyy {
+      background-image: url("/images/academy-cap.png");
+    }
+
+    &.tele {
+      background-image: url("/images/telegram.png");
+    }
+    &-inner {
+      padding: 56px;
+
+      .subtitle {
+        color: #28a8f5;
+        font-family: Mardoto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+
+        @include mediaTo($size1366) {
+          font-size: 12px;
+          letter-spacing: 3px;
+        }
+
+        @include mediaTo($size896) {
+          font-size: 8px;
+          letter-spacing: 1.5px;
+        }
+
+        @include mediaTo($size768) {
+          font-size: 12px;
+          line-height: 24px;
+          letter-spacing: 3px;
+        }
+      }
+      .title {
+        font-family: "Montserrat arm";
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 58px;
+
+        @include mediaTo($size1366) {
+          font-size: 32px;
+          line-height: 40px;
+        }
+
+        @include mediaTo($size896) {
+          font-size: 24px;
+          line-height: 20px;
+        }
+
+        @include mediaTo($size768) {
+          font-size: 32px;
+          margin-top: 8px;
+          line-height: 40px;
+        }
+
+        @include mediaTo($size480) {
+          font-size: 24px;
+          line-height: 32px;
+          margin-top: 0;
+        }
+      }
+      li {
+        color: #fff;
+        font-family: Mardoto;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+        display: flex;
+        align-items: center;
+        opacity: 0.65;
+        margin-bottom: 8px;
+        .description {
+          margin-left: 8px;
+        }
+
+        @include mediaTo($size1366) {
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        @include mediaTo($size896) {
+          font-size: 14px;
+        }
+
+        @include mediaTo($size896) {
+          margin-bottom: 4px;
+        }
+      }
+
+      .left-part {
+        max-width: 456px;
+      }
+
+      @include mediaTo($size1366) {
+        padding: 40px;
+      }
+
+      @include mediaTo($size960) {
+        padding: 30px;
+      }
+
+      @include mediaTo($size768) {
+        padding: 40px;
+      }
+
+      @include mediaTo($size576) {
+        padding: 30px;
+      }
+
+      @include mediaTo($size480) {
+        padding: 158px 16px 22px 16px;
+      }
+    }
+    .list-items {
+      margin-top: 22px;
+      margin-bottom: 28px;
+
+      @include mediaTo($size480) {
+        margin-top: 13px;
+      }
+
+      li {
+        @include mediaTo($size1366) {
+          max-width: 332px;
+        }
+      }
+
+      @include mediaTo($size896) {
+        margin-top: 15px;
+        margin-bottom: 22px;
+      }
+
+      @include mediaTo($size768) {
+        margin-top: 22px;
+        margin-bottom: 38px;
+      }
+    }
+
+    @include mediaTo($size1366) {
+      max-width: 571px;
+      background-size: 333px;
+    }
+
+    @include mediaTo($size960) {
+      background-size: 225px;
+    }
+
+    @include mediaTo($size768) {
+      max-width: none;
+    }
+
+    @include mediaTo($size768) {
+      background-size: auto;
+    }
+
+    @include mediaTo($size576) {
+      background-size: 225px;
+    }
+
+    @include mediaTo($size480) {
+      border-radius: 16px;
+    }
+  }
+  button {
+    display: flex;
+    align-items: center;
+    color: var(--White, #fff);
+    font-family: "Montserrat am";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 1.82px;
+    text-transform: uppercase;
+    padding: 20px;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    &.telegram {
+      background: #0091e8;
+    }
+
+    &.academy {
+      background: #72bf44;
+    }
+    span {
+      margin-left: 6px;
+    }
+
+    @include mediaTo($size1366) {
+      padding: 15.5px;
+      font-size: 12px;
+      line-height: 20.571px;
+    }
+
+    @include mediaTo($size896) {
+      padding: 14px;
+      font-size: 10px;
+      line-height: 18px;
+    }
+
+    @include mediaTo($size480) {
+      width: 100%;
+      justify-content: center;
+      font-size: 12px;
+    }
+  }
+}

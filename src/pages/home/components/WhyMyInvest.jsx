@@ -1,6 +1,6 @@
 const WhyMyInvest = () => {
   return (
-    <div className="container">
+    <div className="container why-invest-container">
       <div className="why-invest">
         <div className="sub-title">MyInvest Vlog</div>
         <div className="title">Ինչու ընտրել MyInvest-ը</div>

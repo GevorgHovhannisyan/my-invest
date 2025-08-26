@@ -1,3 +1,5 @@
+import Academy from "./components/Academy";
+import HomeFaq from "./components/HomeFaq";
 import InvestCalculator from "./components/InvestCalculator";
 import MainTopBanner from "./components/MainBanner";
 import WhyMyInvest from "./components/WhyMyInvest";
@@ -8,8 +10,10 @@ const HomePage = () => {
     <>
       <MainTopBanner />
       {/* <WinBlock /> */}
+      <InvestCalculator />
+      <Academy />
       <WhyMyInvest />
-      {/* <InvestCalculator /> */}
+      <HomeFaq />
     </>
   );
 };

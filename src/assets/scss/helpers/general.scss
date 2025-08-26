@@ -2,11 +2,11 @@
   max-width: 1614px;
   width: 100%;
   margin: 0 auto;
-  
+
   @include mediaTo($size1366) {
     max-width: 1204px;
   }
-   
+
   @include mediaTo($size768) {
     max-width: 718px;
   }
@@ -27,4 +27,45 @@
 
 ul {
   list-style-type: none;
+}
+
+button {
+  background: none;
+  cursor: pointer;
+  &.bordered {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    border: 2px solid rgba(114, 191, 68, 0.3);
+    background: none;
+  }
+}
+
+.range-slider {
+  height: 2px !important;
+  background: none !important;
+  margin: 5px 15px;
+
+  &__thumb {
+    background: var(--Brand-500, #72bf44) !important;
+  }
+
+  &__range {
+    background: var(--Brand-500, #72bf44) !important;
+  }
+}
+
+.single-thumb .range-slider__thumb[data-lower] {
+  width: 0;
+}
+.single-thumb .range-slider__range {
+  border-radius: 6px;
+}
+
+.custom-slider {
+  max-width: 550px;
+}
+
+.apexcharts-toolbar {
+  display: none !important;
 }
