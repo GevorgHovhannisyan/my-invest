@@ -1,0 +1,264 @@
+.partner-container {
+  padding: 146px 0;
+  .text-part {
+    max-width: 826px;
+    margin: 0 auto;
+    @include mediaTo($size480) {
+      max-width: 300px;
+    }
+  }
+  .subtitle {
+    @extend %subTitleFont;
+
+    color: var(--Brand-500, #72bf44);
+    text-align: center;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    @include mediaTo($size480) {
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+  }
+
+  .title {
+    @extend %titleFont;
+    color: var(--Black, #000);
+    text-align: center;
+
+    letter-spacing: -1.84px;
+
+    @include mediaTo($size1200) {
+      font-size: 46px;
+      line-height: 54px;
+    }
+
+    @include mediaTo($size768) {
+      font-size: 32px;
+      line-height: 38px;
+    }
+
+    @include mediaTo($size480) {
+      font-size: 28px;
+      line-height: 33px;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    color: var(--Brand-500, #72bf44);
+    font-family: $semibold;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 28.475px; /* 237.288% */
+    letter-spacing: 1.56px;
+    text-transform: uppercase;
+    margin-top: 36px;
+
+    border-radius: 9.763px;
+    border: 1.627px solid rgba(114, 191, 68, 0.3);
+    padding: 12px 20px 12px 24px;
+
+    svg {
+      padding: 6px;
+      margin-left: 4px;
+    }
+
+    @include mediaTo($size768) {
+      margin-top: 34px;
+      font-size: 12px;
+    }
+
+    @include mediaTo($size480) {
+      margin-top: 20px;
+    }
+  }
+
+  .partner-slider {
+    position: relative;
+    // background-color: #f0f0f0; /* main background color */
+    padding-top: 48px;
+    overflow: hidden;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px; /* width of fade */
+      height: 100%;
+      background: linear-gradient(to right, white, transparent);
+      pointer-events: none;
+      z-index: 9;
+      @include mediaTo($size768) {
+        content: none;
+      }
+    }
+
+    /* Right gradient */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100%;
+      background: linear-gradient(to left, white, transparent);
+      pointer-events: none;
+      z-index: 9;
+      @include mediaTo($size768) {
+        content: none;
+      }
+    }
+
+    .partner-row {
+      &.top {
+        animation: slideTop 50s ease-in-out infinite;
+      }
+
+      &.bottom {
+        animation: slideBottom 50s ease-in-out infinite;
+        margin-top: 16px;
+      }
+    }
+
+    .partners-slide-list {
+      display: flex;
+      align-items: center;
+      li {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-radius: 80px;
+        min-width: 238px;
+        max-width: 278px;
+        width: 100%;
+        justify-content: space-between;
+        background-image: url("/images/be-partner/partner-noise.png");
+        margin: 0 8px;
+        .partner-info {
+          display: flex;
+          align-items: center;
+        }
+        .partner-name {
+          display: flex;
+          flex-direction: column;
+          margin-left: 12px;
+          .name {
+            color: var(--Black, #000);
+            font-family: $boldMar;
+            font-size: 16px;
+            @include mediaTo($size768) {
+              font-size: 12.214px;
+            }
+          }
+          .ticker {
+            color: var(--Black, #000);
+            font-family: $mediumMar;
+            font-size: 16px;
+            opacity: 0.4;
+            margin-top: 5px;
+            @include mediaTo($size768) {
+              font-size: 12.214px;
+            }
+          }
+        }
+        .partner-change {
+          display: flex;
+          flex-direction: column;
+
+          .change {
+            font-family: $boldMar;
+            font-size: 16px;
+            line-height: 24px; /* 150% */
+            letter-spacing: 0.64px;
+            &.green {
+              color: var(--Brand-500, #72bf44);
+            }
+            &.red {
+              color: red;
+            }
+
+            @include mediaTo($size1200) {
+              font-size: 12.214px;
+              letter-spacing: 0.5px;
+              line-height: 18.321px;
+            }
+          }
+          .price {
+            color: var(--Black, #000);
+            font-family: $lightMar;
+            font-size: 16px;
+            line-height: 24px; /* 150% */
+            letter-spacing: 0.64px;
+
+            @include mediaTo($size1200) {
+              font-size: 12.214px;
+              letter-spacing: 0.5px;
+              line-height: 18.321px;
+            }
+          }
+        }
+
+        .logo {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          @include mediaTo($size1200) {
+            width: 36.5px;
+            height: 36.5px;
+          }
+        }
+
+        @include mediaTo($size1200) {
+          min-width: 182px;
+          padding: 15.27px;
+        }
+      }
+    }
+
+    @include mediaTo($size768) {
+      padding-top: 49.5px;
+    }
+
+    @include mediaTo($size480) {
+      padding-top: 24px;
+    }
+  }
+
+  @include mediaTo($size768) {
+    padding: 64px 0;
+  }
+
+  @include mediaTo($size480) {
+    padding: 48px 0;
+  }
+}
+
+@keyframes slideTop {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-200px);
+  } /* move right */
+  100% {
+    transform: translateX(0);
+  } /* back to start */
+}
+
+@keyframes slideBottom {
+  0% {
+    transform: translateX(-200px);
+  }
+  50% {
+    transform: translateX(0);
+  } /* move right */
+  100% {
+    transform: translateX(-200px);
+  } /* back to start */
+}

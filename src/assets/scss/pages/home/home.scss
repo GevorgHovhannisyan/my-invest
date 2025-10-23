@@ -1,0 +1,27 @@
+@import "../../helpers/variables";
+@import "../../helpers/mixins";
+@import "../../helpers/extendsStart";
+
+.main-top-banner {
+  height: 892px;
+
+  background: url("/images/left-back.png") left top no-repeat,
+    url("/images/right-back.png") right top no-repeat;
+  background-size: 50% 100%, 50% 100%; /* Each image takes half width */
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+
+
+@import "../../imports/win/main";
+
+@import "../../imports/why-invest/main";
+@import "../../imports/faq/home-faq";
+@import "../../imports/calculator/main";
+@import "../../imports/how-to-buy/main";
+@import "../../imports/academy/academy-home";
+@import "../../imports/invest-easy-way/main";
+@import "../../imports/be-partner/main";
+
+@import "../../helpers/extendsEnd";
