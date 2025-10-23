@@ -4,7 +4,83 @@ $medium: 'montserrat-medium', 'montserratarm-medium'; //500
 $light: 'montserrat-light', 'montserratarm-light'; //300    
 $semibold: 'montserrat-semibold', 'montserratarm-semibold'; //600
 
+
 $regularMar: 'mardoto';
 $boldMar: 'mardoto-bold';
 $mediumMar: 'mardoto-medium';
 $lightMar: 'mardoto-light';
+
+
+
+//media query sizes
+$size400: 401px;
+$size480: 481px;
+$size576: 576px;
+$size600: 601px;
+$size640: 641px;
+$size720: 721px;
+$size768: 769px;
+$size896: 897px;
+$size960: 1025px;
+$size1200: 1201px;
+$size1280: 1281px;
+$size1366: 1366px;
+$size1440: 1441px;
+$size1600: 1601px;
+
+//colors
+$black: #000000;
+$black33: #333333; 
+$gray66: #666666;
+$gray99: #999999;
+$grayE5: #e5e5e5;
+$grayE4: #e4e4e4;
+$white: #ffffff;
+$creamyF2:#f2f2f2;
+$siteColor: #7B43DD;
+$siteColor2: #603FD3;
+$secondColor: #43A6DD;
+$secondColor2: #152276;
+$actionColor: #E9E131;
+$actionColor2: #FFB800;
+$textColor: $white;
+$error: #ff1111;
+$success: #01E17B;
+$info: #388BC7;
+$warning: #FFD99F;
+$mainBg: #1B1C2D;
+$darkBg: #131420;
+$notifBg: #161728;
+$description: #7E7E7E;
+$trackBg: #2b2b39;
+$btnHoverBg: #454545;
+$popoverBg: #66655F;
+$popoverTitle: #574D6D;
+//social icons original color
+$facebookColor: #3b5998;
+$twitterColor: #00acee;
+$youtubeColor: #c4302b;
+$behanceColor: #053eff;
+$linkedinColor: #0e76a8;
+$okColor: #ed812b;
+$pinterestColor: #c8232c;
+$vkColor: #4c75a3;
+$tiktokColor: #EE1D52;
+$telegramColor: #0088cc;
+$instagramColor: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+
+//sizes
+$containerWidth: 1810px;
+$containerPadding: 55px;
+$containerTabPadding: 40px;
+$containerMobPadding: 20px;
+$colPadding: 14px;
+$colTabPadding: 12px;
+$colMobPadding: 4px;
+
+$primaryGradient: radial-gradient(50% 50% at 50% 50%, $siteColor 0%, $siteColor2 100%);
+$secondaryGradient: linear-gradient(150.64deg, $secondColor 0%, $secondColor2 100%);
+$actionsGradient: linear-gradient(272.22deg, $actionColor 1.48%, $actionColor2 99.12%);
+$errorGradient: linear-gradient(180deg, #F85C5C 0%, #BC0000 100%);
+$barGradient: radial-gradient(50% 50% at 50% 50%, rgba($siteColor,0.45) 0%, rgba($siteColor2,0.45) 100%);
+$hotGradient: radial-gradient(92.42% 87.33% at 49.94% 100.32%, #FFBC00 0%, #FF9900 47%, #FF6D00 100%) 

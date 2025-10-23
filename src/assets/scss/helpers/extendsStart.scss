@@ -1,0 +1,277 @@
+%standardList {
+	@include standardList();
+}
+
+%standardRowList {
+	@include standardRowList();
+}
+
+%coverLayer {
+	@include coverLayer();
+}
+
+%fixedCover {
+	@include fixCoverLayer;
+}
+
+%verticalRotate {
+	@include transStyle(scaleX(-1));
+}
+
+%horizontalRotate {
+	@include transStyle(scaleY(-1));
+}
+
+%centeredImage {
+	> img {
+		@extend %coverLayer;
+		object-fit: cover;
+	}
+}
+
+%coverVideo {
+	iframe {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
+
+%square {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 100%;
+	}
+}
+
+%almostSquare {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 75%;
+	}
+}
+
+%lessWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 62.5%;
+	}
+}
+
+%standardWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 56.25%;
+	}
+}
+
+%halfWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 50%;
+	}
+}
+
+%superWide {
+	@include overHidden();
+	@extend %centeredImage;
+	@extend %coverVideo;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 25%;
+	}
+}
+
+%standardNarrow {
+	@include overHidden();
+	@extend %centeredImage;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 177.78%;
+	}
+}
+
+%lessNarrow {
+	@include overHidden();
+	@extend %centeredImage;
+	&:before {
+		display: block;
+		content: "";
+		padding-bottom: 133.33%;
+	}
+}
+
+%iconElement {
+	&:before,
+	&:after {
+		font-family: 'icon' !important;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+%noBlink {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+%centerBlock {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+%centerInlineBlock {
+	display: inline-flex;
+	vertical-align: top;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+%linkTypeBtn {
+	border: none;
+	padding: 0;
+	background: transparent;
+}
+
+%middleText {
+	font-size: 160%;
+	line-height: 19px;
+}
+
+%standardText {
+	font-size: 140%;
+	line-height: 17px;
+}
+
+%smallText {
+	font-size: 120%;
+	line-height: 14px;
+}
+
+%standardBtn {
+	border: none;
+	height: 40px;
+	@extend %standardText;
+	@extend %centerInlineBlock;
+	padding: 0 24px;
+	font-family: $bold;
+	border-radius: 20px;
+}
+
+%primaryBtn {
+	@extend %standardBtn;
+	background: $primaryGradient;
+	color: $textColor;
+	@include zIndex(2);
+	@include loading;
+	overflow: hidden;
+	&:before {
+		@extend %coverLayer;
+		content: "";
+		@extend %opacity300;
+		@extend %noBlink;
+		z-index: -1;
+		background: linear-gradient(0deg, rgba($black, 0.2), rgba($black, 0.2)), $primaryGradient;
+		opacity: 0;
+	}
+
+	&:disabled,
+	&.disabled,
+	&.inactive {
+		background: $description;
+		pointer-events: none;
+		&:before,
+		&:after {
+			display: none;
+		}
+	}
+	@media(hover: hover) {
+		&:hover:before {
+			opacity: 1;
+		}
+	}
+}
+
+
+%secondaryBtn {
+	@extend %standardBtn;
+	@include loading;
+	outline: 1px solid $siteColor2 !important;
+	@include gradientColor($primaryGradient);
+	&:disabled,
+	&.disabled,
+	&.inactive {
+		background: transparent;
+		color: $description;
+		outline-color: $description !important;
+		pointer-events: none;
+		&:before,
+		&:after {
+			display: none;
+		}
+	}
+	$newGradient: linear-gradient(0deg, rgba($black, 0.2), rgba($black, 0.2)), $primaryGradient;
+	@media(hover: hover) {
+		&:hover {
+			@include gradientColor($newGradient);
+		}
+	}
+}
+
+%simpleBtn {
+	border: none;
+	background: transparent;
+	font-family: $bold;
+	font-size: 140%;
+	line-height: 20px;
+	padding: 0 16px;
+	border-radius: 24px;
+	height: 48px;
+	@extend %back300;
+	@extend %centerInlineBlock;
+	@include mediaRange($size576, $size960) {
+		font-size: 160%;
+	}
+	&:active {
+		background: $btnHoverBg;
+	}
+	@media (hover: hover) {
+		&:hover {
+			background: $btnHoverBg;
+		}
+	}
+}

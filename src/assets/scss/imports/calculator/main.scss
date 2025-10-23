@@ -1,0 +1,268 @@
+.calculator-container {
+  padding: 128px 0 175px 0;
+  &-inner {
+    padding: 0 15px;
+  }
+  .calculator-heading {
+    .head {
+      @extend %subTitleFont;
+      color: var(--Brand-500, #72bf44);
+      text-align: center;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+
+      @include mediaTo($size768) {
+        font-size: 12px;
+        letter-spacing: 3px;
+      }
+    }
+    .title {
+      @extend %titleFont;
+      color: var(--Black, #000);
+      text-align: center;
+      letter-spacing: -2.32px;
+
+      @include mediaTo($size768) {
+        font-size: 32px;
+        line-height: 38px;
+      }
+    }
+  }
+  .calculator-inner {
+    display: flex;
+    padding: 32px 72px 72px 72px;
+    border-radius: 40px;
+    background: var(--Gray-WEB-UI-100, #f5f5f5);
+    margin-top: 44px;
+    // justify-content: space-between;
+    .calculate-part {
+      width: 100%;
+      max-width: 576px;
+      display: flex;
+      flex-direction: column;
+      padding-right: 72px;
+
+      @include mediaTo($size1366) {
+        padding-right: 48px;
+        max-width: 461px;
+      }
+
+      @include mediaTo($size1200) {
+        max-width: 400px;
+        padding-right: 24px;
+      }
+
+      @include mediaTo($size896) {
+        max-width: 320px;
+      }
+
+      @include mediaTo($size768) {
+        max-width: 100%;
+        padding-right: 0;
+      }
+
+      //   @include mediaTo($size768) {
+      //     grid-template-columns: 1fr 1fr;
+      //     gap: 16px;
+      //   }
+    }
+
+    .form-input-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      max-width: 576px;
+      margin-top: 20px;
+      label {
+        color: var(--Gray-WEB-UI-500, #737373);
+        font-family: "Montserrat arm";
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px; /* 133.333% */
+        letter-spacing: 0.72px;
+        text-transform: uppercase;
+        padding-bottom: 4px;
+        margin-left: 16px;
+      }
+
+      input {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 16.5px 16px;
+        max-width: 576px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 17px;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        color: #000;
+
+        font-family: Mardoto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+
+        @include mediaTo($size768) {
+          max-width: 100%;
+        }
+      }
+
+      img {
+        padding: 0 15px;
+        margin: -7px 0;
+      }
+
+      .input-wrap {
+        position: relative;
+      }
+
+      .suffix {
+        position: absolute;
+        top: 47.5px;
+        right: 16px;
+        transform: translateY(-50%);
+        color: #98a2b3;
+        font-size: 14px;
+        pointer-events: none; /* lets clicks go to the input */
+        &.no-scale {
+          top: 28px;
+        }
+      }
+
+      .range {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        // margin-top: 10px;
+        span {
+          color: var(--Gray-WEB-UI-500, #737373);
+          text-align: center;
+          font-family: Mardoto;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px; /* 184.615% */
+        }
+      }
+
+      @include mediaTo($size768) {
+        max-width: 100%;
+      }
+    }
+
+    @include mediaTo($size1366) {
+      padding: 24px 48px 48px 48px;
+    }
+
+    @include mediaTo($size1200) {
+      padding: 24px 24px 48px 24px;
+    }
+
+    @include mediaTo($size768) {
+      flex-direction: column;
+    }
+
+    @include mediaTo($size768) {
+      max-width: 100%;
+      padding: 32px 40px 40px;
+    }
+  }
+
+  .chart-part {
+    width: 100%;
+    max-width: 728px;
+
+    border-radius: 24px;
+    background: #fff;
+    // padding: 32px 0 0 0;
+    margin-top: 40px;
+    .chart-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 32px 0 74px;
+
+      @include mediaTo($size1200) {
+        padding: 24px 24px 0 24px;
+      }
+    }
+
+    #chart {
+      padding: 32px 32px 0 32px;
+
+      @include mediaTo($size1200) {
+        padding: 32px 0 0 0;
+      }
+    }
+
+    .text {
+      color: var(--Gray-WEB-UI-500, #737373);
+      font-family: "Montserrat arm";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 16px; /* 133.333% */
+      letter-spacing: 0.72px;
+      text-transform: uppercase;
+
+      @include mediaTo($size1200) {
+        font-size: 9px;
+      }
+    }
+
+    .total {
+      color: var(--Brand-500, #72bf44);
+      font-family: "Montserrat arm";
+      font-size: 31px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px; /* 77.419% */
+
+      @include mediaTo($size1200) {
+        font-size: 24px;
+      }
+    }
+
+    .legend {
+      li {
+        display: flex;
+        align-items: center;
+
+        span {
+          color: var(--Gray-WEB-UI-500, #737373);
+          text-align: center;
+          font-family: Mardoto;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+
+        &:first-child {
+          margin-bottom: 8px;
+        }
+      }
+      &-indeficator {
+        width: 10px;
+        height: 10px;
+        background: red;
+        border-radius: 50%;
+        margin-right: 4px;
+        &.blue {
+          background-color: #0e9cff;
+        }
+
+        &.green {
+          background-color: #72bf44;
+        }
+      }
+    }
+  }
+
+  .apexcharts-legend {
+    display: none;
+  }
+}

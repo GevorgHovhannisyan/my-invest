@@ -1,4 +1,6 @@
-
+@import "../../helpers/variables";
+@import "../../helpers/mixins";
+@import "../../helpers/extendsStart";
 
 .main-top-banner {
   height: 892px;
@@ -10,15 +12,16 @@
   background-color: black;
 }
 
-.win-block {
-  padding-top: 147px;
 
 
-@import "./win.scss";
-@import "./stock-bond.scss";
+@import "../../imports/win/main";
 
+@import "../../imports/why-invest/main";
+@import "../../imports/faq/home-faq";
+@import "../../imports/calculator/main";
+@import "../../imports/how-to-buy/main";
+@import "../../imports/academy/academy-home";
+@import "../../imports/invest-easy-way/main";
+@import "../../imports/be-partner/main";
 
-
-}
-
-@import "./why-invest.scss";
+@import "../../helpers/extendsEnd";

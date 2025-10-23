@@ -1,0 +1,340 @@
+.how-to-buy {
+  background-image: url("/images/how-to-buy/how-to-buy-bg.png");
+  background-color: black;
+  &-container {
+    padding: 141px 241px;
+  }
+  .matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 16px;
+    .text-block {
+      grid-column: 1; /* stays in first cell */
+      border-radius: 8px;
+      color: white;
+      .subtitle {
+        @extend %subTitleFont;
+        color: var(--Brand-500, #72bf44);
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+      }
+      .title {
+        @extend %titleFont;
+        span {
+          color: var(--Brand-500, #72bf44);
+        }
+      }
+    }
+
+    .items {
+      display: contents; /* lets <li> take grid positions directly */
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      .matrix-item {
+        overflow: hidden;
+        border-radius: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        background: linear-gradient(
+          224deg,
+          rgba(255, 255, 255, 0.11) 5.26%,
+          rgba(255, 255, 255, 0.02) 87.15%
+        );
+        backdrop-filter: blur(14px);
+        max-width: 396px;
+        text-align: center;
+        .step {
+          opacity: 0.5;
+          color: var(--White, #fff);
+          text-align: center;
+          font-family: $mediumMar;
+          font-size: 14px;
+          line-height: 24px;
+          letter-spacing: 3.5px;
+          text-transform: uppercase;
+          padding-top: 40px;
+        }
+
+        .description {
+          color: var(--White, #fff);
+          text-align: center;
+          font-family: $medium;
+          font-size: 24px;
+          line-height: 33px;
+          margin-top: 8px;
+          padding: 0 32px;
+          span {
+            text-decoration-line: underline;
+            text-decoration-style: dotted;
+            text-decoration-skip-ink: auto;
+            text-decoration-color: var(--Gray-WEB-UI-500, #737373);
+            text-decoration-thickness: 9%;
+            text-underline-offset: 15%;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-part {
+    .icons-parent {
+      display: flex;
+      position: relative;
+      .store-icon-google {
+        position: relative;
+        bottom: -60px;
+        left: 30px;
+        transform: rotate(-21.45deg);
+        aspect-ratio: 1 / 1;
+        .social-icon {
+          position: absolute;
+          top: 55px;
+          left: 65px;
+        }
+      }
+      .store-icon-apple {
+        position: relative;
+        transform: rotate(9.82deg);
+        bottom: -50px;
+        left: -25px;
+        .social-icon {
+          position: absolute;
+          left: 42.5px;
+          top: 42.5px;
+        }
+      }
+    }
+  }
+
+  .step-2 {
+    .bottom-part {
+      display: flex;
+      transform: translateX(-430px);
+    }
+
+    &.animate .bottom-part {
+      animation: myInvestSlider 5s ease-in-out;
+    }
+
+
+  }
+
+  .step-3 {
+    .menu-icons {
+      border-radius: 24px 24px 32px 32px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: linear-gradient(
+        254deg,
+        rgba(255, 255, 255, 0.2) 8.66%,
+        rgba(255, 255, 255, 0) 41.09%,
+        rgba(255, 255, 255, 0.2) 103.67%
+      );
+      box-shadow: 0 -12px 48px var(--sds-size-depth-negative-200) rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(40px);
+      margin: 0 8px;
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      .whtf {
+        width: 106px;
+        height: 109px;
+        background: rgba(114, 191, 68, 0.11);
+        border-radius: 50%;
+        // transition: 0.1s;
+      }
+    }
+    .bottom-part {
+      padding-top: 64px;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      //   margin-top: 3px;
+    }
+
+    .text-under {
+      color: var(--Brand-500, #72bf44);
+      text-align: center;
+      text-shadow: 0 4px 20px rgba(114, 191, 68, 0.8);
+      font-family: $regularMar;
+      font-size: 16px;
+      line-height: 9px;
+    }
+
+    .no-text {
+      max-width: 34.5px;
+      width: 100%;
+      height: 8px;
+      border-radius: 57.083px;
+      background: linear-gradient(
+        274deg,
+        rgba(255, 255, 255, 0) -10.03%,
+        rgba(255, 255, 255, 0.2) 88.73%
+      );
+      margin: 0 auto;
+      margin-top: 8px;
+    }
+
+    &:hover {
+      ul {
+        // margin-top: -3px;
+      }
+      .whtf {
+        border-top: 3px solid #72bf44;
+        border-radius: 5px 5px 0 0;
+        margin-top: -3px;
+      }
+    }
+  }
+
+  .step-5 {
+    // background-image: url('/images/how-to-buy/step-5-bg.png') !important;
+    // background-repeat: no-repeat !important;
+    // background-size: cover !important;
+    .buy-slide-block {
+      .buy-slide {
+        position: relative;
+        padding: 28px 0 28px 6px;
+        max-width: 274px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 24px;
+        background: linear-gradient(
+          254deg,
+          rgba(255, 255, 255, 0.5) 8.66%,
+          rgba(255, 255, 255, 0.1) 41.09%,
+          rgba(255, 255, 255, 0.7) 103.67%
+        );
+        // background: linear-gradient(
+        //   254deg,
+        //   #72bf44 0%,
+        //   #4f882d 100%
+        // ); /* initial green */
+        box-shadow: 0 -12px 48px var(--sds-size-depth-negative-200) rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(40px);
+        margin: 0 auto;
+
+        /* smooth background transition */
+        transition: background 0.6s;
+
+        .slide-btn {
+          position: absolute;
+          top: 50%;
+          left: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 58px;
+          height: 58px;
+          background: linear-gradient(
+            180deg,
+            #72bf44 0%,
+            #4f882d 100%
+          ); /* start white */
+          border-radius: 15px;
+          transform: translateY(-50%);
+          transition: left 3s ease, background-color 3s ease ; /* smooth slide + color */
+          img {
+            position: absolute;
+          }
+        }
+
+        .checked-img {
+          opacity: 0;
+        }
+      }
+
+      .slide-btn img {
+        transition: transform 1s ease-in-out; /* smooth rotation */
+        transform: rotate(0deg);
+      }
+
+      &:hover .slide-btn {
+        left: calc(100% - 64px);
+        background: rgb(255, 255, 255) 0%;
+        // background: red;
+
+        border: 1.5px solid rgba(255, 255, 255, 0.4);
+
+        .checked-img {
+          transition: 3s;
+          opacity: 1;
+        }
+
+        .swipe-btn {
+          transition: 3s;
+          opacity: 0;
+          transform: rotate(90deg);
+        }
+      }
+
+      &:hover .buy-slide {
+        background: #72bf44;
+      }
+
+      .buy-text {
+        color: var(--White, #fff);
+        text-align: center;
+        font-family: $boldMar;
+        font-size: 20px;
+        padding-left: 49px;
+      }
+    }
+
+    .bought {
+      position: absolute;
+      bottom: -100px;
+    }
+
+    .bottom-part {
+      padding-top: 52px;
+    }
+
+    .description {
+      padding: 0 60px !important;
+    }
+  }
+
+  .slide-line {
+    max-width: 139px;
+    width: 100%;
+    height: 5px;
+    border-radius: 44.381px;
+    opacity: 0.2;
+    background: #fff;
+    margin: 26px auto 11px auto;
+  }
+}
+
+@keyframes myInvestSlider {
+  0% {
+    transform: translateX(-430px);
+  }
+  //   50% {
+  //     transform: translateX(-200px);
+  //   } /* move right */
+  100% {
+    transform: translateX(-200px);
+  } /* back to start */
+}
+
+@keyframes buySlide {
+  0% {
+    // left: 0;
+  }
+
+  90% {
+    background-color: #4f882d;
+    // left: 75%;
+  }
+  100% {
+    // left: calc(100% - 67px);
+    background-color: #e9e9e9;
+  }
+}
