@@ -1,0 +1,45 @@
+  .stock-qr{
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    /* width: 128px; */
+  }
+  
+  @property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  
+  .stock-qr::after, .stock-qr::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle),  gray, gray, #D9D9D9);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 0;
+    padding: 1px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+  }
+  .stock-qr::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+  }
+  .stock-anim-block {
+    position: relative;
+    z-index: 9999;
+    border-radius: 24px;
+  }
+  @keyframes spin{
+    from{
+      --angle: 0deg;
+    }
+    to{
+      --angle: 360deg;
+    }
+  }
+

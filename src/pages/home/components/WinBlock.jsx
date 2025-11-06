@@ -1,4 +1,4 @@
-import '../../../assets/scss/imports/win/animation.css'
+// import '../../../assets/scss/imports/win/animation.css'
 
 const WinBlock = () => {
   return (

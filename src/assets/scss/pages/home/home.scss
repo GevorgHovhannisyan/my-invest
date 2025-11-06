@@ -6,19 +6,15 @@
   height: 892px;
   position: relative;
   overflow: hidden;
-
   
+  // background-image: url("/images/banner/banner-dots.gif");
+
   // background: url("/images/left-back.png") left top no-repeat,
   //   url("/images/right-back.png") right top no-repeat;
   background-size: 50% 100%, 50% 100%;
   /* Each image takes half width */
   background-repeat: no-repeat;
   background-color: black;
-
-
-.header{
-  opacity: 0;
-}
 
   .left-bg {
     background: url("/images/left-back.png");
@@ -29,7 +25,25 @@
     display: block;
     height: 100%;
     position: absolute;
-    left: -100vw;;
+    left: -100vw;
+    top: 0;
+
+    @include mediaTo($size1440) {
+      background-image: url("/images/home-left-back-1366.png");
+    }
+
+    @include mediaTo($size1366) {
+      background-position-x: -100%;
+    }
+
+    @include mediaTo($size960) {
+      background-image: url("/images/home-left-back-766.png");
+      background-position-x: -150%;
+    }
+
+    @include mediaTo($size640) {
+      background-image: url("/images/home-left-back-mobile.png");
+    }
   }
 
   .right-bg {
@@ -42,58 +56,137 @@
     height: 100%;
     position: absolute;
     right: -100vw;
+    top: 0;
+
+    @include mediaTo($size1440) {
+      background-image: url("/images/home-right-back-1366.png");
+    }
+    @include mediaTo($size1366) {
+      background-position-x: 200%;
+    }
+
+    @include mediaTo($size960) {
+      background-position-x: 250%;
+      background-image: url("/images/home-right-back-766.png");
+    }
+    @include mediaTo($size640) {
+      background-image: url("/images/home-right-back-mobile.png");
+    }
+  }
+
+  @include mediaTo($size768) {
+    max-height: 800px;
+  }
+
+  @include mediaTo($size640) {
+    max-height: 700px;
   }
 }
 
-.loaded{
-  ._asd{
+.loaded {
+  .invest-word {
     left: 0;
-     opacity: 1;
+    opacity: 1;
     @include animStyle(all 1.2s);
   }
-    .inner_title span:last-child{
+  .inner_title span:last-child {
     right: 0;
-        opacity: 1;
+    opacity: 1;
     @include animStyle(all 1.2s);
   }
-     .inner_title span:first-child{
+  .inner_title span:first-child {
     right: 0;
     opacity: 1;
     top: 0;
     @include animStyle(all 1.2s);
   }
-    .dsa{
+  .top-description {
     bottom: 0;
     opacity: 1;
     @include animStyle(all 2s);
   }
 
-  .left-bg{
-     left: 0;
+  .left-bg {
+    left: 0;
     @include animStyle(left 2s);
   }
 
-   .right-bg{
-     right: 0;
+  .right-bg {
+    right: 0;
     @include animStyle(right 2s);
   }
 
-  .left_img{
-      transform: rotate(-10deg);
-             left: 50px;
+  .left_img {
+    transform: rotate(-10deg);
+    left: 50px;
     @include animStyle(all 2s);
+
+    @include mediaTo($size1366) {
+      max-width: 252px;
+      left: 40px;
+    }
+    @include mediaTo($size768) {
+      left: 120px;
+      max-width: 181px;
+      top: 20px;
+    }
+
+    @include mediaTo($size640) {
+      position: absolute;
+      left: -20px;
+      top: 120px;
+    }
   }
 
-  .right_img{
-      transform: rotate(10deg);
-         right: 50px;
+  .right_img {
+    transform: rotate(10deg);
+    right: 50px;
     @include animStyle(all 2s);
+
+    @include mediaTo($size1366) {
+      transform: rotate(8deg);
+      max-width: 252px;
+      right: 40px;
+    }
+
+    @include mediaTo($size768) {
+      max-width: 181px;
+      top: 20px;
+      right: 120px;
+    }
+    @include mediaTo($size640) {
+      position: absolute;
+      top: 120px;
+      right: -20px;
+    }
+  }
+
+  .center_img {
+    @include animStyle(all 2s);
+    top: 0;
+
+    @include mediaTo($size1366) {
+      max-width: 345px;
+      width: 100%;
+    }
+
+    @include mediaTo($size768) {
+      max-width: 271px;
+      top: 30px;
+    }
+    @include mediaTo($size640) {
+      top: 70px;
+      position: absolute;
+    }
   }
 }
 
+
+
 .top-inner {
   max-width: 615px;
-  margin: 20px auto 0;
+  // margin: 20px auto 0;
+  margin: 25px auto 0;
   color: white;
   text-align: center;
   font-size: 3rem;
@@ -102,10 +195,21 @@
   overflow: hidden;
   height: 100%;
 
-  .asd {
+  .inner-description {
     font-size: 1.7rem;
     line-height: 25px;
-    color:rgba($white, 70%);
+    color: rgba($white, 70%);
+    opacity: 0.7;
+
+    @include mediaTo($size1366) {
+      font-size: 15px;
+      line-height: 23px;
+    }
+
+    @include mediaTo($size768) {
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 }
 
@@ -114,59 +218,106 @@
   flex-direction: column;
 }
 
-._asd {
+.invest-word {
   position: relative;
   left: -430px;
   opacity: 0;
   font-size: 60px;
   line-height: 72px;
-    font-family: $semibold;
+  font-family: $semibold;
+
+  @include mediaTo($size1366) {
+    font-size: 50px;
+    line-height: 58px;
+  }
+
+  @include mediaTo($size1366) {
+    font-size: 50px;
+    line-height: 58px;
+  }
+
+  @include mediaTo($size768) {
+    font-size: 44px;
+    line-height: 58px;
+  }
+
+  @include mediaTo($size640) {
+    line-height: 32px;
+    font-size: 32px;
+  }
 }
 
 .inner_title {
- font-size: 60px;
+  font-size: 60px;
   line-height: 72px;
-  color: #72BF44;
-    font-family: $semibold;
-  span:last-child{
-     position: relative;
-  right: -430px;
-  opacity: 0;
+  color: #72bf44;
+  font-family: $semibold;
+  span:last-child {
+    position: relative;
+    right: -430px;
+    opacity: 0;
   }
 
-    span:first-child{
+  span:first-child {
     position: relative;
-  right: -430px;
-  top: 40px;
-  opacity: 0;
+    right: -430px;
+    top: 40px;
+    opacity: 0;
+  }
+
+  @include mediaTo($size1366) {
+    font-size: 50px;
+    line-height: 58px;
+  }
+
+  @include mediaTo($size640) {
+    line-height: 32px;
+    font-size: 32px;
   }
 }
 
-.dsa {
+.top-description {
   position: relative;
   bottom: -400px;
   opacity: 0;
+
+  @include mediaTo($size1366) {
+    max-width: 537px;
+    margin: 0 auto;
+  }
+
+  @include mediaTo($size768) {
+    max-width: 570px;
+  }
+
+  @include mediaTo($size640) {
+    padding: 0 15px;
+  }
 }
 
-.btn_asd {
+.description-btn {
+  display: flex;
+  align-items: center;
+  background: #7cc24b;
+  color: #fff;
+  font-size: 22px;
+  padding: 16px 44px;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  transition: background 0.2s;
+  margin: 35px auto;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 
-   display: flex;
-      align-items: center;
-      background: #7cc24b;
-      color: #fff;
-      font-size: 22px;
-      padding: 16px 44px;
-      border: none;
-      border-radius: 18px;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 600;
-      transition: background 0.2s;
-      margin: 35px auto;
-      font-size: 14px;
-      line-height: 24px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+  @include mediaTo($size1366) {
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
 }
 
 .inner_title {
@@ -176,76 +327,81 @@
   margin: 0 auto 20px;
 
   span:last-child {
-    margin-left: 10px
+    margin-left: 10px;
   }
-
 }
 
 .inner_section {
   margin-top: 50px;
-  padding: 0 220px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   top: 50%;
   margin-top: -10px;
-      left: 0;
-    right: 0;
+  left: 0;
+  right: 0;
 
   img {
     height: auto;
     width: 100%;
   }
+
+
 }
 
-.main-top-banner {
-  position: relative;
-  overflow: hidden;
-}
 
 .center_img {
   max-width: 486px;
   position: relative;
   z-index: 1;
+
+  position: relative;
+  top: -200px;
 }
 
 .right_img,
 .left_img {
-  max-width: 355px;
-  ;
+  max-width: 400px;
+  width: 100%;
+  opacity: 0.7;
+  filter: blur(1px);
 }
 
 .left_img {
-  transform: rotate(-20deg);
-  left: 400px;
+  transform: rotate(0deg);
+  left: 450px;
   position: relative;
-  &::before{
-    content: "";
-    position: absolute;
-    backdrop-filter: blur(14.40000057220459px);
-    width: 100%;
-    height: 100%;
-    left: 0;
-    right: 0;
-    opacity: 70%;
+
+  &:hover {
+    transform: rotate(-15deg);
   }
 }
 
 .right_img {
-  transform: rotate(20deg);
+  transform: rotate(0deg);
   backdrop-filter: blur(14.40000057220459px);
-  right: 400px;
+  right: 450px;
   position: relative;
-    &::before{
-    content: "";
-    position: absolute;
-    backdrop-filter: blur(14.40000057220459px);
-    width: 100%;
-    height: 100%;
-    left: 0;
-    right: 0;
-    opacity: 70%;
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   backdrop-filter: blur(14.40000057220459px);
+  //   width: 100%;
+  //   height: 100%;
+  //   left: 0;
+  //   right: 0;
+  //   opacity: 70%;
+  // }
+
+  &:hover {
+    transform: rotate(15deg);
+  }
+}
+
+.dots-block {
+  img {
+    mix-blend-mode: plus-lighter;
   }
 }
 

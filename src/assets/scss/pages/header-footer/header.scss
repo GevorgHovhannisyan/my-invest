@@ -1,8 +1,16 @@
+.loaded .header {
+  opacity: 1;
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: 40px;
+  opacity: 0;
+  z-index: 999;
+  width: 100%;
+  position: relative;
 
   .social-links {
     ul {
@@ -54,6 +62,14 @@
         margin-left: 5px;
       }
     }
+  }
+
+  @include mediaTo($size768) {
+    padding-top: 33px;
+  }
+
+    @include mediaTo($size640) {
+    padding-top: 26px;
   }
 }
 

@@ -2,7 +2,7 @@ import "../../../assets/scss/pages/home/academy-btn-anim.css";
 
 const Academy = () => {
   return (
-    <div className="academy container">
+    <div className="academy-parent container">
       <div className="academy-container-inner">
         <ul className="academy-blocks">
           <li className="academy-blocks-item tele">
