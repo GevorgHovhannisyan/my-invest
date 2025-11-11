@@ -1,5 +1,5 @@
 import { LanguageSwitcher } from "../language-swicher";
-
+import './animation.css'
 const Header = () => {
   return (
     <div className="container header">
@@ -57,8 +57,12 @@ const Header = () => {
       <div className="language-academy">
         <div className="academy-header">
           <button>
-            <img src="/images/icons/academy.svg" alt="" />
-            <span>ACADEMY</span>
+            <div class="header-qr">
+              <div className="header-anim-block">
+                <img src="/images/icons/academy.svg" alt="" />
+                <span>ACADEMY</span>
+              </div>
+            </div>
           </button>
         </div>
 

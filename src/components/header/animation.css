@@ -1,0 +1,57 @@
+.header-qr {
+  padding: 2px;
+  background: #1c1f2b;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  width: 128px;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.header-qr::after,
+.header-qr::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    #d1dfd9,
+    rgba(114, 191, 68, 1),
+    #d1dfd9,
+    rgba(114, 191, 68, 1)
+  );
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 0;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+.header-qr::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+.header-anim-block {
+  background: #223d14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+  position: relative;
+  border-radius: 8px;
+}
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}

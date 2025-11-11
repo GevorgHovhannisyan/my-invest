@@ -2,6 +2,9 @@
   opacity: 1;
 }
 
+.logo {
+  padding-left: 45px;
+}
 .header {
   display: flex;
   align-items: center;
@@ -49,7 +52,7 @@
         rgba(114, 191, 68, 0.35) 120.5%
       );
       width: 134px;
-      padding: 6px 0;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,13 +65,17 @@
         margin-left: 5px;
       }
     }
+    button {
+      background: none;
+      border: none;
+    }
   }
 
   @include mediaTo($size768) {
     padding-top: 33px;
   }
 
-    @include mediaTo($size640) {
+  @include mediaTo($size640) {
     padding-top: 26px;
   }
 }

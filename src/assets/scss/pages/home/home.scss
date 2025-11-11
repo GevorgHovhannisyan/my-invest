@@ -6,7 +6,7 @@
   height: 892px;
   position: relative;
   overflow: hidden;
-  
+
   // background-image: url("/images/banner/banner-dots.gif");
 
   // background: url("/images/left-back.png") left top no-repeat,
@@ -181,8 +181,6 @@
   }
 }
 
-
-
 .top-inner {
   max-width: 615px;
   // margin: 20px auto 0;
@@ -346,10 +344,7 @@
     height: auto;
     width: 100%;
   }
-
-
 }
-
 
 .center_img {
   max-width: 486px;
@@ -399,11 +394,17 @@
   }
 }
 
-.dots-block {
+.loaded .dots-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+  pointer-events: none;
   img {
     mix-blend-mode: plus-lighter;
   }
 }
+
 
 @import "../../imports/win/main";
 

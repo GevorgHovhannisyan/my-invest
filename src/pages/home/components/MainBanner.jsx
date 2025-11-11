@@ -42,11 +42,11 @@ const MainTopBanner = () => {
         </div>
       </div>
 
-      {/* <div className="dots-block">
+      <div className="dots-block">
         <img className="dots-1"  src="/images/banner/banner-dots-1.gif" alt="" />
         <img className="dots-2" src="/images/banner/banner-dots-2.gif" alt="" />
 
-      </div> */}
+      </div>
     </div>
   );
 };
