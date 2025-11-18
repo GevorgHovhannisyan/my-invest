@@ -1,12 +1,201 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import "../../../assets/scss/imports/how-to-buy/animation.css";
 
 const HowToBuy = () => {
   const [animating, setAnimating] = useState(false);
+  const containerRef = useRef(null);
+  const connectorAnimationRef = useRef(null);
+  const [svgSize, setSvgSize] = useState({ width: 0, height: 0 });
+  const [connectorShapes, setConnectorShapes] = useState([]);
+  const stepRefs = useRef([]);
+
+  const registerStep = (index) => (element) => {
+    stepRefs.current[index] = element;
+  };
+
+  const updateConnectors = () => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const steps = stepRefs.current
+      .map((step) => {
+        if (!step) {
+          return null;
+        }
+        const rect = step.getBoundingClientRect();
+        return {
+          top: rect.top - containerRect.top,
+          left: rect.left - containerRect.left,
+          width: rect.width,
+          height: rect.height,
+          right: rect.right - containerRect.left,
+          bottom: rect.bottom - containerRect.top,
+          centerX: rect.left - containerRect.left + rect.width / 2,
+          centerY: rect.top - containerRect.top + rect.height / 2,
+        };
+      })
+      .filter(Boolean);
+    if (steps.length !== 5) {
+      setConnectorShapes([]);
+      return;
+    }
+    const stepOne = steps[0];
+    const stepTwo = steps[1];
+    const stepThree = steps[2];
+    const stepFour = steps[3];
+    const stepFive = steps[4];
+
+    const shapes = [];
+    const connectorOffset = Math.max(
+      12,
+      Math.min(28, containerRect.width * 0.01)
+    );
+    const getAnchorPoint = (
+      rect,
+      side,
+      ratio = 0.5,
+      offset = connectorOffset
+    ) => {
+      const clampedRatio = Math.min(1, Math.max(0, ratio));
+      switch (side) {
+        case "left":
+          return {
+            x: rect.left - offset,
+            y: rect.top + rect.height * clampedRatio,
+          };
+        case "right":
+          return {
+            x: rect.right + offset,
+            y: rect.top + rect.height * clampedRatio,
+          };
+        case "top":
+          return {
+            x: rect.left + rect.width * clampedRatio,
+            y: rect.top - offset,
+          };
+        case "bottom":
+          return {
+            x: rect.left + rect.width * clampedRatio,
+            y: rect.bottom + offset,
+          };
+        default:
+          return {
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2,
+          };
+      }
+    };
+
+    const horizontalLineRatio = 0.33;
+    const stepOneRightCenter = {
+      x: stepOne.right,
+      y: stepOne.centerY,
+    };
+    const stepTwoLeftCenter = {
+      x: stepTwo.left,
+      y: stepTwo.centerY,
+    };
+    shapes.push({
+      path: `M ${stepOneRightCenter.x} ${stepOneRightCenter.y} L ${stepTwoLeftCenter.x} ${stepTwoLeftCenter.y}`,
+      circles: [stepOneRightCenter, stepTwoLeftCenter],
+    });
+
+    const baselineY = stepThree.top + stepThree.height * horizontalLineRatio;
+    const stepTwoRightCenter = {
+      x: stepTwo.right,
+      y: stepTwo.centerY,
+    };
+    const baselinePoints = [
+      stepTwoRightCenter,
+      { x: stepTwoRightCenter.x, y: baselineY },
+      { x: stepThree.left, y: baselineY },
+      { x: stepThree.right, y: baselineY },
+      { x: stepFour.left, y: baselineY },
+      { x: stepFour.right, y: baselineY },
+      { x: stepFive.left, y: baselineY },
+      { x: stepFive.right, y: baselineY },
+    ];
+    const baselinePath = baselinePoints
+      .map((point, index) => {
+        const command = index === 0 ? "M" : "L";
+        return `${command} ${point.x} ${point.y}`;
+      })
+      .join(" ");
+    shapes.push({
+      path: baselinePath,
+      circles: [
+        stepTwoRightCenter,
+        { x: stepTwoRightCenter.x, y: baselineY },
+        { x: stepThree.left, y: baselineY },
+        { x: stepThree.right, y: baselineY },
+        { x: stepFour.left, y: baselineY },
+        { x: stepFour.right, y: baselineY },
+        { x: stepFive.left, y: baselineY },
+        { x: stepFive.right, y: baselineY },
+      ],
+    });
+
+    const baselineExtensionPath = [
+      `M ${stepFive.right} ${baselineY}`,
+      `L ${stepFive.right} ${stepFive.bottom}`,
+      `L ${stepFive.right} ${stepFive.bottom + connectorOffset}`,
+    ].join(" ");
+    shapes.push({
+      path: baselineExtensionPath,
+      circles: [
+        { x: stepFive.right, y: baselineY },
+        { x: stepFive.right, y: stepFive.bottom },
+        { x: stepFive.right, y: stepFive.bottom + connectorOffset },
+      ],
+    });
+
+    setSvgSize({
+      width: containerRect.width,
+      height: containerRect.height,
+    });
+    setConnectorShapes(shapes);
+  };
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      if (connectorAnimationRef.current) {
+        cancelAnimationFrame(connectorAnimationRef.current);
+      }
+      connectorAnimationRef.current = requestAnimationFrame(updateConnectors);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    const resizeObserver =
+      typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(handleResize)
+        : null;
+    if (resizeObserver && containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+    if (resizeObserver) {
+      stepRefs.current.forEach((step) => {
+        if (!step) {
+          return;
+        }
+        resizeObserver.observe(step);
+      });
+    }
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+      if (connectorAnimationRef.current) {
+        cancelAnimationFrame(connectorAnimationRef.current);
+      }
+    };
+  }, []);
+
   const animateSlider = () => {
     if (!animating) {
       setAnimating(true);
-
       setTimeout(() => {
         setAnimating(false);
       }, 5000);
@@ -62,7 +251,26 @@ const HowToBuy = () => {
   };
   return (
     <div className="how-to-buy">
-      <div className="how-to-buy-container">
+      <div className="how-to-buy-container" ref={containerRef}>
+        <div className="how-to-buy-connectors" aria-hidden="true">
+          {svgSize.width > 0 && svgSize.height > 0 && connectorShapes.length > 0 && (
+            <svg
+              width={svgSize.width}
+              height={svgSize.height}
+              viewBox={`0 0 ${svgSize.width} ${svgSize.height}`}
+              preserveAspectRatio="none"
+            >
+              {connectorShapes.map((shape, index) => (
+                <g key={index}>
+                  <path d={shape.path} />
+                  {shape.circles?.map((circle, circleIndex) => (
+                    <circle key={circleIndex} cx={circle.x} cy={circle.y} r="4" />
+                  ))}
+                </g>
+              ))}
+            </svg>
+          )}
+        </div>
         <div className="matrix">
           <ul class="items">
             <li className="matrix-item htb">
@@ -90,7 +298,7 @@ const HowToBuy = () => {
                 </div>
               </div>
             </li>
-            <li className="matrix-item step-1">
+            <li className="matrix-item step-1" ref={registerStep(0)}>
               <div className="top-part">
                 <div className="step">քայլ 1</div>
                 <div className="description">
@@ -123,6 +331,7 @@ const HowToBuy = () => {
             <li
               className={`step-2 matrix-item `} //${animating ? "animate" : ""}
               onMouseEnter={animateSlider}
+              ref={registerStep(1)}
             >
               <div className="top-part">
                 <div className="step">քայլ 2</div>
@@ -136,7 +345,7 @@ const HowToBuy = () => {
                 <img src="/images/how-to-buy/fake-invest.png" alt="" />
               </div>
             </li>
-            <li className="step-3 matrix-item">
+            <li className="step-3 matrix-item" ref={registerStep(2)}>
               <div className="top-part">
                 <div className="step">քայլ 3</div>
                 <div className="description">Ընտրիր «Ինչ գնել» բաժինը</div>
@@ -165,7 +374,7 @@ const HowToBuy = () => {
                 </div>
               </div>
             </li>
-            <li className="step-4 matrix-item">
+            <li className="step-4 matrix-item" ref={registerStep(3)}>
               <div className="top-part ">
                 <div className="step">քայլ 4</div>
                 <div className="description">
@@ -211,7 +420,7 @@ const HowToBuy = () => {
                 </div> */}
               </div>
             </li>
-            <li className="matrix-item step-5">
+            <li className="matrix-item step-5" ref={registerStep(4)}>
               <div className="top-part">
                 <div className="step">քայլ 5</div>
                 <div className="description">Քաշիր «Գնել» կոճակը </div>
