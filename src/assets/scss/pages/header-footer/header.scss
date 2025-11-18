@@ -125,6 +125,10 @@
     rgba(255, 255, 255, 0.02) 87.15%
   );
   backdrop-filter: blur(14px);
+
+  .current_lg span {
+    color: #6dce35;
+  }
 }
 .lg_list {
   // @include standardList;

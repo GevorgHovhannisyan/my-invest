@@ -6,6 +6,7 @@ import {
   setLanguage,
 } from "../../redux/slices/langauge/langauge";
 import { LanguageTransCodes } from "../../constants/langauge";
+import { useTranslation } from "react-i18next";
 // import { getRouteMain } from "../../constants/router";
 
 export const LanguageSwitcher = ({ lang }) => {
@@ -13,6 +14,8 @@ export const LanguageSwitcher = ({ lang }) => {
   // const { pathname } = useLocation();
   const dispatch = useDispatch();
   const lgRef = useRef();
+  const stateLng = useSelector(languageSelector);
+  const [locale, setLocale] = useState(lang);
 
   const toggleLgList = () => {
     opened ? setOpened(false) : setOpened(true);
@@ -38,7 +41,12 @@ export const LanguageSwitcher = ({ lang }) => {
     };
   }, [opened]);
 
-  const locale = useSelector(languageSelector);
+  useEffect(() => {
+    console.log("stateLng", stateLng);
+    // i18n.changeLanguage(stateLng);
+    setLocale(stateLng);
+  }, [stateLng]);
+
   const storageLocale = localStorage.getItem("locale");
   if (storageLocale && storageLocale !== locale) {
     dispatch(setLanguage(storageLocale));
@@ -69,39 +77,41 @@ export const LanguageSwitcher = ({ lang }) => {
           <img src="/images/language-switcher.svg" alt="" />
         </button>
         <div className="langauges-list">
-        <ul className="lg_list">
-          <li onClick={() => changeLanguage(LanguageTransCodes.EN)}>
-            <NavLink
-              to={getUrl(LanguageTransCodes.EN)}
-              className={`${
-                lang === LanguageTransCodes.EN ? "current_lg" : ""
-              }`}
-            >
-              <img src="/images/lng_en.svg" alt="" />
-              <span>English</span>
-            </NavLink>
-          </li>
-          <li onClick={() => changeLanguage(LanguageTransCodes.AM)}>
-            <NavLink
-              to={getUrl(LanguageTransCodes.AM)}
-              className={`${!lang ? "current_lg" : ""}`}
-            >
-              <img src="/images/lng_am.svg" alt="" />
-              <span>Armenian</span>
-            </NavLink>
-          </li>
-          <li onClick={() => changeLanguage(LanguageTransCodes.RU)}>
-            <NavLink
-              to={getUrl(LanguageTransCodes.RU)}
-              className={`${
-                lang === LanguageTransCodes.RU ? "current_lg" : ""
-              }`}
-            >
-              <img src="/images/lng_ru.svg" alt="" />
-              <span>Russian</span>
-            </NavLink>
-          </li>
-        </ul>
+          <ul className="lg_list">
+            <li onClick={() => changeLanguage(LanguageTransCodes.EN)}>
+              <NavLink
+                to={getUrl(LanguageTransCodes.EN)}
+                className={`${
+                  locale === LanguageTransCodes.EN ? "current_lg" : ""
+                }`}
+              >
+                <img src="/images/lng_en.svg" alt="" />
+                <span>English {locale}</span>
+              </NavLink>
+            </li>
+            <li onClick={() => changeLanguage(LanguageTransCodes.AM)}>
+              <NavLink
+                to={getUrl(LanguageTransCodes.AM)}
+                className={`${
+                  locale === LanguageTransCodes.AM ? "current_lg" : ""
+                }`}
+              >
+                <img src="/images/lng_am.svg" alt="" />
+                <span>Armenian</span>
+              </NavLink>
+            </li>
+            <li onClick={() => changeLanguage(LanguageTransCodes.RU)}>
+              <NavLink
+                to={getUrl(LanguageTransCodes.RU)}
+                className={`${
+                  locale === LanguageTransCodes.RU ? "current_lg" : ""
+                }`}
+              >
+                <img src="/images/lng_ru.svg" alt="" />
+                <span>Russian</span>
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

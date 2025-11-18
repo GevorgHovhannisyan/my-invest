@@ -1,6 +1,10 @@
 // import '../../../assets/scss/imports/win/animation.css'
+import { useTranslation } from "react-i18next";
+import { FormattedMessage } from "react-intl";
 
 const WinBlock = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="win-block container">
       <div className="win-container">
@@ -10,6 +14,7 @@ const WinBlock = () => {
               <div class="card-left">
                 <div class="card-label ">
                   ԿԱՏԱՐԻ՛Ր ԳՈՐԾԱՐՔՆԵՐ
+                  {/* <FormattedMessage id="Calculator offer title" /> */}
                   <div className="action-line"></div>
                 </div>
                 <div class="card-title">

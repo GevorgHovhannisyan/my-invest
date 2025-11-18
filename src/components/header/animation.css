@@ -46,6 +46,7 @@
   z-index: 999;
   position: relative;
   border-radius: 8px;
+  padding: 6px 13px 6px 10px;
 }
 @keyframes spin {
   from {
