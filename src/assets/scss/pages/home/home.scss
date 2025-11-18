@@ -365,6 +365,12 @@
   filter: blur(1px);
   @include mediaTo($size1280) {
     opacity: 0;
+    max-width: 250px;
+  }
+
+  @include mediaTo($size896) {
+    opacity: 0;
+    max-width: 150px;
   }
 }
 
