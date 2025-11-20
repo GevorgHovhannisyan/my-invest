@@ -1,51 +1,13 @@
-// import '../../../assets/scss/imports/win/animation.css'
-import { useTranslation } from "react-i18next";
-import { FormattedMessage } from "react-intl";
+import "../../../assets/scss/imports/win/animation.css";
 
 const WinBlock = () => {
-  const { t, i18n } = useTranslation();
-
   return (
     <div className="win-block container">
       <div className="win-container">
         <ul className="win-home-portfel">
           <li class="card">
             <div class="card-content">
-              <div class="card-left">
-                <div class="card-label ">
-                  ԿԱՏԱՐԻ՛Ր ԳՈՐԾԱՐՔՆԵՐ
-                  {/* <FormattedMessage id="Calculator offer title" /> */}
-                  <div className="action-line"></div>
-                </div>
-                <div class="card-title">
-                  Շահիր՝ տուն <br />
-                  <span>Երևանում</span>
-                </div>
-                <div class="card-description ">
-                  Ստացիր պրոմո կոդ ամեն գործարքից և մասնակցիր տան խաղարկությանը
-                </div>
-                <button class="card-btn">
-                  Բացել Հաշիվ
-                  <span className="icon-arrow-right"></span>
-                </button>
-              </div>
-              <div class="card-image-block left">
-                <img
-                  className="web-win-image"
-                  src="/images/win-block/home.png"
-                  alt=""
-                />
-                <img
-                  className="mobile-win-image"
-                  src="/images/win-block/home-mobile.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </li>
-          <li class="card">
-            <div className="anim-block-home-win">
-              <div class="card-content">
+              <div className="parent-anim">
                 <div class="card-left">
                   <div class="card-label ">
                     ԿԱՏԱՐԻ՛Ր ԳՈՐԾԱՐՔՆԵՐ
@@ -55,7 +17,7 @@ const WinBlock = () => {
                     Շահիր՝ տուն <br />
                     <span>Երևանում</span>
                   </div>
-                  <div class="card-description mardoto">
+                  <div class="card-description ">
                     Ստացիր պրոմո կոդ ամեն գործարքից և մասնակցիր տան
                     խաղարկությանը
                   </div>
@@ -64,17 +26,55 @@ const WinBlock = () => {
                     <span className="icon-arrow-right"></span>
                   </button>
                 </div>
-                <div class="card-image-block right">
+                <div class="card-image-block left">
                   <img
                     className="web-win-image"
-                    src="/images/win-block/win-invest.png"
+                    src="/images/win-block/home.png"
                     alt=""
                   />
                   <img
                     className="mobile-win-image"
-                    src="/images/win-block/win-invest-mobile.png"
+                    src="/images/win-block/home-mobile.png"
                     alt=""
                   />
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="card">
+            <div className="anim-block-home-win">
+              <div class="card-content">
+                <div className="parent-anim">
+                  <div class="card-left">
+                    <div class="card-label ">
+                      ԿԱՏԱՐԻ՛Ր ԳՈՐԾԱՐՔՆԵՐ
+                      <div className="action-line"></div>
+                    </div>
+                    <div class="card-title">
+                      Շահիր՝ տուն <br />
+                      <span>Երևանում</span>
+                    </div>
+                    <div class="card-description mardoto">
+                      Ստացիր պրոմո կոդ ամեն գործարքից և մասնակցիր տան
+                      խաղարկությանը
+                    </div>
+                    <button class="card-btn">
+                      Բացել Հաշիվ
+                      <span className="icon-arrow-right"></span>
+                    </button>
+                  </div>
+                  <div class="card-image-block right">
+                    <img
+                      className="web-win-image"
+                      src="/images/win-block/win-invest.png"
+                      alt=""
+                    />
+                    <img
+                      className="mobile-win-image"
+                      src="/images/win-block/win-invest-mobile.png"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
             </div>

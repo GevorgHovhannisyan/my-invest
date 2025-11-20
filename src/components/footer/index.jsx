@@ -42,6 +42,7 @@ const Footer = () => {
               <div className="links">
                 <span className="f-title">Օգտակար հղումներ </span>
                 <a href="#">
+                 
                   Պայմաններ, սակագներ և այլն{" "}
                   <span className="icon-arrow-right"></span>
                 </a>
@@ -70,32 +71,16 @@ const Footer = () => {
                 <div className="social-links">
                   <ul>
                     <li>
-                      <a
-                        href="https://apps.apple.com/am/app/my-ameria/id1546373103"
-                        target="_blank"
-                      >
-                        <div className="apple">
-                          <img
-                            src="/images/footer/aapl.svg"
-                            alt="Apple Store"
-                          />
-                          <div className="name">App Store</div>
-                        </div>
-                      </a>
+                      <div className="apple">
+                        <img src="/images/footer/aapl.svg" alt="" />
+                        <div className="name">App Store</div>
+                      </div>
                     </li>
                     <li className="google-item">
-                      <a
-                        href="https://play.google.com/store/apps/details?id=com.banqr.ameriabank"
-                        target="_blank"
-                      >
-                        <div className="google-play">
-                          <img
-                            src="/images/footer/google.svg"
-                            alt="Google Play"
-                          />
-                          <div className="name">Google Play</div>
-                        </div>
-                      </a>
+                      <div className="google-play">
+                        <img src="/images/footer/google.svg" alt="" />
+                        <div className="name">Google Play</div>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -140,25 +125,13 @@ const Footer = () => {
               <div className="socials">
                 <ul>
                   <li>
-                    <a
-                      href="https://www.facebook.com/Ameriabank"
-                      target="_blank"
-                    >
-                      <span className="icon-facebook"></span>
-                    </a>
+                    <span className="icon-facebook"></span>
                   </li>
                   <li>
-                    <a
-                      href="https://www.instagram.com/ameriabank/"
-                      target="_blank"
-                    >
-                      <span className="icon-instagram"></span>
-                    </a>
+                    <span className="icon-instagram"></span>
                   </li>
                   <li>
-                    <a href="https://t.me/myinvest_blog" target="_blank">
-                      <span className="icon-telegram"></span>
-                    </a>
+                    <span className="icon-telegram"></span>
                   </li>
                 </ul>
               </div>

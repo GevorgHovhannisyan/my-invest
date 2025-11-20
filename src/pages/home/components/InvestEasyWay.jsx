@@ -2,10 +2,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from "react-responsive";
+import { useEffect, useState } from "react";
 
 const InvestEasyWay = () => {
-
-  const items = ["Item 1", "Item 2", "Item 3", "Item 4"];
+  const ids = ["XvyaxLWnb6s", "qo6ReBYMcyc", "6TNm49DeE7U", "QX2gR7GvwW8"];
+    const [videos, setVideos] = useState([]);
 
   const settings = {
     // infinite: true,
@@ -40,21 +41,52 @@ const InvestEasyWay = () => {
     ],
   };
 
+  async function fetchVideos(videoIds) {
+    const requests = videoIds.map((id) =>
+      fetch(
+        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`
+      ).then((res) => res.json())
+    );
+
+    try {
+      const results = await Promise.all(requests);
+
+      const mapped = results.map((data, index) => ({
+        id: videoIds[index],
+        title: data.title,
+        thumbnail: data.thumbnail_url,
+        author: data.author_name,
+      }));
+
+      setVideos(mapped);
+    } catch (err) {
+      console.error("oEmbed error:", err);
+    }
+  }
+
+  useEffect(() => {
+    fetchVideos(ids);
+  }, []);
+
   return (
     <div className="invest-easy-way">
       <div className="invest-easy-way-inner">
         <div className="head-text-block">
           <div className="subtitle">MyInvest Vlog</div>
           <div className="title">
-            Ներդրումները 
+            Ներդրումները
             <span> պարզ</span> բառերով
           </div>
         </div>
         <div className="slider-container">
           <Slider {...settings}>
-            {items.map(() => {
+            {videos.map((video) => {
               return (
-                <div className="slider-item-custom">
+                <a
+                  href="https://www.youtube.com/watch?v=XvyaxLWnb6s"
+                  target="_blank"
+                  className="slider-item-custom"
+                >
                   <div className="img-part">
                     <div className="play-btn">
                       <svg
@@ -72,15 +104,15 @@ const InvestEasyWay = () => {
                     </div>
                     <img
                       className="why-invest-image"
-                      src="/images/second-image.png"
+                      src={video.thumbnail}
                       alt=""
                     />
                   </div>
                   <div className="text-block">
-                    <div className="title">Ներդրումների մասին</div>
+                    <div className="title">{video.title}</div>
                     <div className="description">4 րոպե</div>
                   </div>
-                </div>
+                </a>
               );
             })}
           </Slider>

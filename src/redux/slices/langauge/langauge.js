@@ -1,11 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {
-  LanguageLabels,
-  LANGUAGES,
-  LanguageTransCodes,
-} from "../../../constants/langauge";
+import { createSlice } from '@reduxjs/toolkit';
+import { LanguageLabels, LANGUAGES, LanguageTransCodes } from '../../../constants/langauge';
 const initialState = {
-  lang: localStorage.getItem("locale") || LanguageTransCodes.EN,
+  lang: localStorage.getItem('locale') || LanguageTransCodes.EN,
   languages: [
     { id: 1, code: LanguageTransCodes.AM, label: LanguageLabels.AM },
     { id: 2, code: LanguageTransCodes.RU, label: LanguageLabels.RU },
@@ -14,7 +10,7 @@ const initialState = {
 };
 
 const languageSlice = createSlice({
-  name: "language",
+  name: 'language',
   initialState,
   reducers: {
     setLanguage: (state, { payload }) => {
@@ -26,7 +22,7 @@ const languageSlice = createSlice({
         return;
       }
 
-      localStorage.setItem("locale", payload);
+      localStorage.setItem('locale', payload);
       state.lang = payload;
     },
   },

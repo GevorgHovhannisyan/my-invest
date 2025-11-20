@@ -1,9 +1,26 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import "../../../assets/scss/imports/how-to-buy/animation.css";
+import gsap from "gsap";
+
 
 const HowToBuy = () => {
   const [animating, setAnimating] = useState(false);
-  const containerRef = useRef(null);
+
+  const slideRef = useRef(null);
+  const btnRef = useRef(null);
+  const [bought, setBought] = useState(false);
+
+  const animateSlider = () => {
+    if (!animating) {
+      setAnimating(true);
+
+      setTimeout(() => {
+        setAnimating(false);
+      }, 5000);
+    }
+  };
+
+    const containerRef = useRef(null);
   const connectorAnimationRef = useRef(null);
   const [svgSize, setSvgSize] = useState({ width: 0, height: 0 });
   const [connectorShapes, setConnectorShapes] = useState([]);
@@ -193,14 +210,51 @@ const HowToBuy = () => {
     };
   }, []);
 
-  const animateSlider = () => {
-    if (!animating) {
-      setAnimating(true);
-      setTimeout(() => {
-        setAnimating(false);
-      }, 5000);
-    }
-  };
+  useEffect(() => {
+    const slideWidth = slideRef?.current?.offsetWidth;
+    const btnWidth = btnRef?.current?.offsetWidth;
+    const maxX = slideWidth - btnWidth - 15; // 5px left for final position
+
+    const el = btnRef.current;
+    const buyText = slideRef?.current?.querySelector(".buy-text");
+    const boughtText = slideRef?.current?.querySelector(".bought");
+
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: { ease: "power2.inOut" },
+    });
+
+    // forward animation (slide + bg + icons)
+    tl.to(el, {
+      x: maxX,
+      duration: 1.2,
+      onUpdate: function () {
+        const p = this.progress(); // 0 → 1
+
+        // background
+        el.style.setProperty("--p", p);
+
+        // icons
+        el.style.setProperty("--iconOld", 1 - p);
+        el.style.setProperty("--iconNew", p);
+
+        // text opacity
+        buyText.style.setProperty("--textOld", 1 - p);
+        boughtText.style.setProperty("--textNew", p);
+      },
+    });
+    const box = slideRef?.current;
+    const onEnter = () => tl.play();
+    const onLeave = () => tl.reverse();
+
+    box.addEventListener("mouseenter", onEnter);
+    box.addEventListener("mouseleave", onLeave);
+
+    return () => {
+      box.removeEventListener("mouseenter", onEnter);
+      box.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
 
   const stockItem = (stock) => {
     if (stock) {
@@ -252,31 +306,24 @@ const HowToBuy = () => {
   return (
     <div className="how-to-buy">
       <div className="how-to-buy-container" ref={containerRef}>
-        <div className="how-to-buy-connectors" aria-hidden="true">
-          {svgSize.width > 0 &&
-            svgSize.height > 0 &&
-            connectorShapes.length > 0 && (
-              <svg
-                width={svgSize.width}
-                height={svgSize.height}
-                viewBox={`0 0 ${svgSize.width} ${svgSize.height}`}
-                preserveAspectRatio="none"
-              >
-                {connectorShapes.map((shape, index) => (
-                  <g key={index}>
-                    <path d={shape.path} />
-                    {shape.circles?.map((circle, circleIndex) => (
-                      <circle
-                        key={circleIndex}
-                        cx={circle.x}
-                        cy={circle.y}
-                        r="4"
-                      />
-                    ))}
-                  </g>
-                ))}
-              </svg>
-            )}
+          <div className="how-to-buy-connectors" aria-hidden="true">
+          {svgSize.width > 0 && svgSize.height > 0 && connectorShapes.length > 0 && (
+            <svg
+              width={svgSize.width}
+              height={svgSize.height}
+              viewBox={`0 0 ${svgSize.width} ${svgSize.height}`}
+              preserveAspectRatio="none"
+            >
+              {connectorShapes.map((shape, index) => (
+                <g key={index}>
+                  <path d={shape.path} />
+                  {shape.circles?.map((circle, circleIndex) => (
+                    <circle key={circleIndex} cx={circle.x} cy={circle.y} r="4" />
+                  ))}
+                </g>
+              ))}
+            </svg>
+          )}
         </div>
         <div className="matrix">
           <ul class="items">
@@ -336,9 +383,8 @@ const HowToBuy = () => {
               </div>
             </li>
             <li
-              className={`step-2 matrix-item `} //${animating ? "animate" : ""}
+              className={`step-2 matrix-item `} ref={registerStep(1)} //${animating ? "animate" : ""}
               onMouseEnter={animateSlider}
-              ref={registerStep(1)}
             >
               <div className="top-part">
                 <div className="step">քայլ 2</div>
@@ -430,12 +476,22 @@ const HowToBuy = () => {
             <li className="matrix-item step-5" ref={registerStep(4)}>
               <div className="top-part">
                 <div className="step">քայլ 5</div>
-                <div className="description">Քաշիր «Գնել» կոճակը </div>
+                <div className="description">Քաշիր «Գնել» կոճակը</div>
               </div>
               <div className="bottom-part">
                 <div className="buy-slide-block">
-                  <div className="buy-slide">
-                    <div className="slide-btn">
+                  <div className="buy-slide" ref={slideRef}>
+                    <div className="slide-btn" ref={btnRef}>
+                      {/* <img
+                        className="swipe-btn"
+                        src="/images/how-to-buy/buy-vector.svg"
+                        alt=""
+                      />
+                      <img
+                        className="checked-img"
+                        src="/images/how-to-buy/checked.svg"
+                        alt=""
+                      /> */}
                       <img
                         className="swipe-btn"
                         src="/images/how-to-buy/buy-vector.svg"
@@ -447,9 +503,10 @@ const HowToBuy = () => {
                         alt=""
                       />
                     </div>
-
-                    <div className="buy-text">Գնել</div>
-                    <div className="bought">Գնված է</div>
+                    <div className="buy-bought">
+                      <div className="buy-text">Գնել</div>
+                      <div className="bought">Գնված է</div>
+                    </div>
                   </div>
                 </div>
 

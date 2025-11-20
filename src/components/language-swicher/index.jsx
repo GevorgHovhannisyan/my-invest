@@ -6,8 +6,6 @@ import {
   setLanguage,
 } from "../../redux/slices/langauge/langauge";
 import { LanguageTransCodes } from "../../constants/langauge";
-import { useTranslation } from "react-i18next";
-// import { getRouteMain } from "../../constants/router";
 
 export const LanguageSwitcher = ({ lang }) => {
   const [opened, setOpened] = useState(false);
@@ -86,7 +84,7 @@ export const LanguageSwitcher = ({ lang }) => {
                 }`}
               >
                 <img src="/images/lng_en.svg" alt="" />
-                <span>English {locale}</span>
+                <span>English </span>
               </NavLink>
             </li>
             <li onClick={() => changeLanguage(LanguageTransCodes.AM)}>

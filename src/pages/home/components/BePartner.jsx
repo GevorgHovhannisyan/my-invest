@@ -87,7 +87,7 @@ const BePartner = () => {
               return (
                 <li key={index}>
                   <div className="partner-info">
-                    <div className="logo">
+                    <div className="logo-partner">
                       <img
                         src={`/images/be-partner/${partner.icon}.png`}
                         alt={partner.title}
@@ -123,7 +123,7 @@ const BePartner = () => {
               return (
                 <li key={index}>
                   <div className="partner-info">
-                    <div className="logo">
+                    <div className="logo-partner">
                       <img
                         src={`/images/be-partner/${partner.icon}.png`}
                         alt={partner.title}
