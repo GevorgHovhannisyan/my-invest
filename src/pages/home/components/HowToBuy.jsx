@@ -108,14 +108,14 @@ const HowToBuy = () => {
       y: stepTwo.centerY,
     };
     const baselinePoints = [
-      stepTwoRightCenter,
-      { x: stepTwoRightCenter.x, y: baselineY },
+      // stepTwoRightCenter,
+      // { x: stepTwoRightCenter.x, y: baselineY },
       { x: stepThree.left, y: baselineY },
       { x: stepThree.right, y: baselineY },
       { x: stepFour.left, y: baselineY },
       { x: stepFour.right, y: baselineY },
       { x: stepFive.left, y: baselineY },
-      { x: stepFive.right, y: baselineY },
+      // { x: stepFive.right, y: baselineY },
     ];
     const baselinePath = baselinePoints
       .map((point, index) => {
@@ -127,13 +127,13 @@ const HowToBuy = () => {
       path: baselinePath,
       circles: [
         stepTwoRightCenter,
-        { x: stepTwoRightCenter.x, y: baselineY },
-        { x: stepThree.left, y: baselineY },
+        // { x: stepTwoRightCenter.x, y: baselineY },
+        // { x: stepThree.left, y: baselineY },
         { x: stepThree.right, y: baselineY },
         { x: stepFour.left, y: baselineY },
         { x: stepFour.right, y: baselineY },
         { x: stepFive.left, y: baselineY },
-        { x: stepFive.right, y: baselineY },
+        // { x: stepFive.right, y: baselineY },
       ],
     });
 
@@ -143,12 +143,12 @@ const HowToBuy = () => {
       `L ${stepFive.right} ${stepFive.bottom + connectorOffset}`,
     ].join(" ");
     shapes.push({
-      path: baselineExtensionPath,
-      circles: [
-        { x: stepFive.right, y: baselineY },
-        { x: stepFive.right, y: stepFive.bottom },
-        { x: stepFive.right, y: stepFive.bottom + connectorOffset },
-      ],
+      // path: baselineExtensionPath,
+      // circles: [
+      //   { x: stepFive.right, y: baselineY },
+      //   { x: stepFive.right, y: stepFive.bottom },
+      //   { x: stepFive.right, y: stepFive.bottom + connectorOffset },
+      // ],
     });
 
     setSvgSize({
@@ -253,23 +253,30 @@ const HowToBuy = () => {
     <div className="how-to-buy">
       <div className="how-to-buy-container" ref={containerRef}>
         <div className="how-to-buy-connectors" aria-hidden="true">
-          {svgSize.width > 0 && svgSize.height > 0 && connectorShapes.length > 0 && (
-            <svg
-              width={svgSize.width}
-              height={svgSize.height}
-              viewBox={`0 0 ${svgSize.width} ${svgSize.height}`}
-              preserveAspectRatio="none"
-            >
-              {connectorShapes.map((shape, index) => (
-                <g key={index}>
-                  <path d={shape.path} />
-                  {shape.circles?.map((circle, circleIndex) => (
-                    <circle key={circleIndex} cx={circle.x} cy={circle.y} r="4" />
-                  ))}
-                </g>
-              ))}
-            </svg>
-          )}
+          {svgSize.width > 0 &&
+            svgSize.height > 0 &&
+            connectorShapes.length > 0 && (
+              <svg
+                width={svgSize.width}
+                height={svgSize.height}
+                viewBox={`0 0 ${svgSize.width} ${svgSize.height}`}
+                preserveAspectRatio="none"
+              >
+                {connectorShapes.map((shape, index) => (
+                  <g key={index}>
+                    <path d={shape.path} />
+                    {shape.circles?.map((circle, circleIndex) => (
+                      <circle
+                        key={circleIndex}
+                        cx={circle.x}
+                        cy={circle.y}
+                        r="4"
+                      />
+                    ))}
+                  </g>
+                ))}
+              </svg>
+            )}
         </div>
         <div className="matrix">
           <ul class="items">
@@ -453,7 +460,8 @@ const HowToBuy = () => {
         </div>
         <div className="transactions-fees ">
           <img src="/images/faq-icon.svg" alt="" />
-          Գործարքների միջնորդավճարներին կարող ես ծանոթանալ <a href="#"> այստեղ</a>
+          Գործարքների միջնորդավճարներին կարող ես ծանոթանալ{" "}
+          <a href="#"> այստեղ</a>
         </div>
       </div>
     </div>

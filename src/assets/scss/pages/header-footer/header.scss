@@ -4,6 +4,14 @@
 
 .logo {
   padding-left: 45px;
+
+  @include mediaTo($size768) {
+    padding-left: 15px;
+  }
+
+  @include mediaTo($size480) {
+    padding-left: 0;
+  }
 }
 .header {
   display: flex;
@@ -16,6 +24,8 @@
   position: relative;
 
   .social-links {
+    left: 15px;
+    position: relative;
     ul {
       list-style-type: none;
       display: grid;
@@ -38,6 +48,9 @@
           padding: 7px;
         }
       }
+    }
+    @include mediaTo($size768) {
+      display: none;
     }
   }
 
@@ -181,4 +194,6 @@
   position: relative;
   display: flex;
   align-items: center;
+  left: -15px;
+  position: relative;
 }
