@@ -42,7 +42,6 @@ const Footer = () => {
               <div className="links">
                 <span className="f-title">Օգտակար հղումներ </span>
                 <a href="#">
-                 
                   Պայմաններ, սակագներ և այլն{" "}
                   <span className="icon-arrow-right"></span>
                 </a>
@@ -64,7 +63,7 @@ const Footer = () => {
               <div className="qr-block">
                 <div class="qr">
                   <div className="anim-block">
-                    <img src="/images/footer/footer-qr.png" alt="QR Code" />
+                    <img src="/images/footer/qr-code-black.png" alt="QR Code" />
                   </div>
                 </div>
 

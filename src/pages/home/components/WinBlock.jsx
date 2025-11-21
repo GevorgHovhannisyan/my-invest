@@ -42,39 +42,37 @@ const WinBlock = () => {
             </div>
           </li>
           <li class="card">
-            <div className="anim-block-home-win">
-              <div class="card-content">
-                <div className="parent-anim">
-                  <div class="card-left">
-                    <div class="card-label ">
-                      ԿԱՏԱՐԻ՛Ր ԳՈՐԾԱՐՔՆԵՐ
-                      <div className="action-line"></div>
-                    </div>
-                    <div class="card-title">
-                      Շահիր՝ տուն <br />
-                      <span>Երևանում</span>
-                    </div>
-                    <div class="card-description mardoto">
-                      Ստացիր պրոմո կոդ ամեն գործարքից և մասնակցիր տան
-                      խաղարկությանը
-                    </div>
-                    <button class="card-btn">
-                      Բացել Հաշիվ
-                      <span className="icon-arrow-right"></span>
-                    </button>
+            <div class="card-content">
+              <div className="parent-anim">
+                <div class="card-left">
+                  <div class="card-label ">
+                    ԿԱՏԱՐԻ՛Ր ԳՈՐԾԱՐՔՆԵՐ
+                    <div className="action-line"></div>
                   </div>
-                  <div class="card-image-block right">
-                    <img
-                      className="web-win-image"
-                      src="/images/win-block/win-invest.png"
-                      alt=""
-                    />
-                    <img
-                      className="mobile-win-image"
-                      src="/images/win-block/win-invest-mobile.png"
-                      alt=""
-                    />
+                  <div class="card-title">
+                    Շահիր՝ տուն <br />
+                    <span>Երևանում</span>
                   </div>
+                  <div class="card-description mardoto">
+                    Ստացիր պրոմո կոդ ամեն գործարքից և մասնակցիր տան
+                    խաղարկությանը
+                  </div>
+                  <button class="card-btn">
+                    Բացել Հաշիվ
+                    <span className="icon-arrow-right"></span>
+                  </button>
+                </div>
+                <div class="card-image-block right">
+                  <img
+                    className="web-win-image"
+                    src="/images/win-block/win-invest.png"
+                    alt=""
+                  />
+                  <img
+                    className="mobile-win-image"
+                    src="/images/win-block/win-invest-mobile.png"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>

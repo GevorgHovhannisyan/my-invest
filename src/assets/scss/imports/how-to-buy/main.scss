@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   &-container {
     padding: 141px 241px;
-     position: relative;
+    position: relative;
     isolation: isolate;
 
     @include mediaTo($size1680) {
@@ -24,7 +24,7 @@
     }
   }
 
-   .how-to-buy-connectors {
+  .how-to-buy-connectors {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -51,9 +51,8 @@
     }
   }
 
-
   .matrix {
-       position: relative;
+    position: relative;
     z-index: 1;
     .text-block {
       grid-column: 1; /* stays in first cell */

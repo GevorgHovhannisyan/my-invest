@@ -212,7 +212,6 @@
   }
 }
 
-
 .title_asd {
   display: flex;
   flex-direction: column;
@@ -275,7 +274,6 @@
     font-size: 32px;
   }
 }
-
 
 .top-description {
   position: relative;
@@ -416,6 +414,140 @@
   }
 }
 
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  transition: 0.5s;
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+  }
+
+  &.opened {
+    display: block;
+    .qr-modal__content {
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 635px;
+    padding: 40px 0 40px 40px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  &__close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #777;
+    transition: 0.2s;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #000;
+      background: #e5e5e5;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  &__qr {
+    border-radius: 14px;
+    border: 3px solid #72bf44;
+    max-width: 142px;
+  }
+
+  &__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 290px;
+    h2 {
+      font-family: $medium;
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    p {
+      color: var(--Gray-WEB-UI-500, #737373);
+      font-family: $regularMar;
+      font-size: 18px;
+      line-height: 24px;
+      margin-top: 10px;
+    }
+  }
+
+  &__store-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 28px;
+  }
+}
+
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 17px 22px;
+  /* border-radius: 12px; */
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+  border-radius: 57.857px;
+  background: var(--Black, #000);
+  &.apple {
+    background: #000;
+  }
+
+  &.google {
+    background: #2e7cf6;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 600px) {
+  .qr-modal__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .qr-modal__qr {
+    width: 150px;
+  }
+}
 
 @import "../../imports/win/main";
 

@@ -153,6 +153,10 @@
     margin-top: 32px;
     display: flex;
     align-items: center;
+    img {
+      max-width: 128px;
+      border-radius: 8px;
+    }
   }
   .social-links {
     margin-left: 24px;
@@ -202,7 +206,6 @@
     // max-width: 1584px;
 
     &::before {
-
       content: "";
       flex: 1;
       height: 1px;
@@ -214,7 +217,7 @@
       );
     }
 
-display: flex;
+    display: flex;
     margin: 0 auto;
     margin-top: 85px;
 

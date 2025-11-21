@@ -2,13 +2,36 @@ import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import "../../../assets/scss/imports/how-to-buy/animation.css";
 import gsap from "gsap";
 
-
 const HowToBuy = () => {
+  const tl = gsap.timeline({
+    paused: true,
+    defaults: { ease: "power2.inOut" },
+  });
+
   const [animating, setAnimating] = useState(false);
 
   const slideRef = useRef(null);
   const btnRef = useRef(null);
-  const [bought, setBought] = useState(false);
+
+  const bottomRef = useRef(null);
+
+  const animateSliderInvest = () => {
+    if (!tl.current) {
+      tl.current = gsap.timeline({ paused: true });
+
+      tl.current.to(bottomRef.current, {
+        x: -60, // amount to slide left (change as needed)
+        duration: 0.8,
+        ease: "power3.out",
+      });
+    }
+
+    tl.current.play();
+  };
+
+  const resetSlider = () => {
+    if (tl.current) tl.current.reverse();
+  };
 
   const animateSlider = () => {
     if (!animating) {
@@ -20,7 +43,7 @@ const HowToBuy = () => {
     }
   };
 
-    const containerRef = useRef(null);
+  const containerRef = useRef(null);
   const connectorAnimationRef = useRef(null);
   const [svgSize, setSvgSize] = useState({ width: 0, height: 0 });
   const [connectorShapes, setConnectorShapes] = useState([]);
@@ -219,11 +242,6 @@ const HowToBuy = () => {
     const buyText = slideRef?.current?.querySelector(".buy-text");
     const boughtText = slideRef?.current?.querySelector(".bought");
 
-    const tl = gsap.timeline({
-      paused: true,
-      defaults: { ease: "power2.inOut" },
-    });
-
     // forward animation (slide + bg + icons)
     tl.to(el, {
       x: maxX,
@@ -306,24 +324,31 @@ const HowToBuy = () => {
   return (
     <div className="how-to-buy">
       <div className="how-to-buy-container" ref={containerRef}>
-          <div className="how-to-buy-connectors" aria-hidden="true">
-          {svgSize.width > 0 && svgSize.height > 0 && connectorShapes.length > 0 && (
-            <svg
-              width={svgSize.width}
-              height={svgSize.height}
-              viewBox={`0 0 ${svgSize.width} ${svgSize.height}`}
-              preserveAspectRatio="none"
-            >
-              {connectorShapes.map((shape, index) => (
-                <g key={index}>
-                  <path d={shape.path} />
-                  {shape.circles?.map((circle, circleIndex) => (
-                    <circle key={circleIndex} cx={circle.x} cy={circle.y} r="4" />
-                  ))}
-                </g>
-              ))}
-            </svg>
-          )}
+        <div className="how-to-buy-connectors" aria-hidden="true">
+          {svgSize.width > 0 &&
+            svgSize.height > 0 &&
+            connectorShapes.length > 0 && (
+              <svg
+                width={svgSize.width}
+                height={svgSize.height}
+                viewBox={`0 0 ${svgSize.width} ${svgSize.height}`}
+                preserveAspectRatio="none"
+              >
+                {connectorShapes.map((shape, index) => (
+                  <g key={index}>
+                    <path d={shape.path} />
+                    {shape.circles?.map((circle, circleIndex) => (
+                      <circle
+                        key={circleIndex}
+                        cx={circle.x}
+                        cy={circle.y}
+                        r="4"
+                      />
+                    ))}
+                  </g>
+                ))}
+              </svg>
+            )}
         </div>
         <div className="matrix">
           <ul class="items">
@@ -383,14 +408,16 @@ const HowToBuy = () => {
               </div>
             </li>
             <li
-              className={`step-2 matrix-item `} ref={registerStep(1)} //${animating ? "animate" : ""}
-              onMouseEnter={animateSlider}
+              className={`step-2 matrix-item `}
+              ref={registerStep(1)} //${animating ? "animate" : ""}
+              onMouseEnter={animateSliderInvest}
+              onMouseLeave={resetSlider}
             >
               <div className="top-part">
                 <div className="step">քայլ 2</div>
                 <div className="description">Գտիր MyInvest-ը Apps բաժնում</div>
               </div>
-              <div className="bottom-part">
+              <div className="bottom-part" ref={bottomRef}>
                 <img src="/images/how-to-buy/fake-invest.png" alt="" />
                 <img src="/images/how-to-buy/my-invest.png" alt="" />
                 <img src="/images/how-to-buy/fake-invest.png" alt="" />

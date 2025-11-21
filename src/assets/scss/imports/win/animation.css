@@ -1,11 +1,11 @@
-  .card-content{
-    padding: 2px;
-    /* background: #1c1f2b; */
-    text-align: center;
-    border-radius: 10px;
-    position: relative;
-    /* width: 128px; */
-  }
+.card-content {
+  padding: 2px;
+  /* background: #1c1f2b; */
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  /* width: 128px; */
+}
 
 @property --angle {
   syntax: "<angle>";
@@ -26,7 +26,14 @@
   z-index: 0;
   padding: 1px;
   border-radius: 10px;
+  opacity: 0;
+  /* animation: 3s spin linear infinite; */
+}
+
+.card:hover .card-content::after,
+.card:hover .card-content::before {
   animation: 3s spin linear infinite;
+  opacity: 1;
 }
 
 .card-content::before {

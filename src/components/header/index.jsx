@@ -1,8 +1,13 @@
+import { useState } from "react";
+import AppDownloadModal from "../../pages/home/components/AppDownloadModal";
 import { LanguageSwitcher } from "../language-swicher";
-import './animation.css'
+import "./animation.css";
 const Header = () => {
+  const [opened, setOpened] = useState(false);
+
   return (
     <div className="container header">
+      <AppDownloadModal opened={opened} closeModal={() => setOpened(false)} />
       <div className="social-links">
         <ul>
           <li className="social-icon">
@@ -56,7 +61,7 @@ const Header = () => {
       </div>
       <div className="language-academy">
         <div className="academy-header">
-          <button>
+          <button onClick={() => setOpened(true)}>
             <div class="header-qr">
               <div className="header-anim-block">
                 <img src="/images/icons/academy.svg" alt="" />
