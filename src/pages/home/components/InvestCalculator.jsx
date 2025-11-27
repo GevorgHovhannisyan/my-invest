@@ -1,27 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import Select from "react-select";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
-import {
-  calculateInvestment,
-  customStyles,
-} from "../../../utils/calculatorUtils";
+import { calculateInvestment } from "../../../utils/calculatorUtils";
 const InvestCalculator = () => {
-  const options = [
-    { value: "annual", label: "Annual" },
-    { value: "semi-annual", label: "Semi-annual" },
-    { value: "quarterly", label: "Quarterly" },
-    { value: "monthly", label: "Monthly" },
-  ];
-
-  let timer = null;
   const [year, setYear] = useState(10);
-  const [investAmount, setInvestAmount] = useState(50000);
-  const [startDeposit, setStartDeposit] = useState(0);
-  const [accumulationFrequency, setAccumulationFrequency] = useState(
-    options[0]
-  ); // default annual
+  const [investAmount, setInvestAmount] = useState(0);
+  const [startDeposit, setStartDeposit] = useState(50000);
+  const [totalBalance, setTotalBalance] = useState(0);
 
   const [expectedRate, setExpectedRate] = useState(10); // default 10%
 
@@ -37,24 +23,24 @@ const InvestCalculator = () => {
     setExpectedRate(input);
   };
 
-  const handleExpectedRateBlur = () => {
-    if (accumulationFrequency === "" || isNaN(accumulationFrequency)) {
-      setExpectedRate("10"); // reset to default
-    } else {
-      setExpectedRate(parseFloat(accumulationFrequency).toFixed(2)); // format to 2 decimals
-    }
-  };
-
   const chartData = useMemo(() => {
-
-    const r = expectedRate / 100; // convert % to decimal
     const results = calculateInvestment(
       startDeposit,
-      investAmount,
-      r,
       year,
-      accumulationFrequency.value
+      expectedRate,
+      investAmount
     );
+
+    if (results.length) {
+      const balance = Number(results[results.length - 1]?.totalBalance).toLocaleString(
+        "en-US",
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }
+      );
+      setTotalBalance(balance);
+    }
 
     return {
       series: [
@@ -71,6 +57,9 @@ const InvestCalculator = () => {
         chart: {
           type: "area",
           height: 350,
+        },
+        dataLabels: {
+          enabled: false,
         },
         xaxis: {
           categories: results.map((d) =>
@@ -89,52 +78,7 @@ const InvestCalculator = () => {
         },
       },
     };
-  }, [year, investAmount, startDeposit, accumulationFrequency, expectedRate]);
-
-  //   const [chartHeight, setChartHeight] = useState(400);
-
-  // const [state, setState] = useState({
-  //   series: [
-  //     {
-  //       name: "Ընդհանուր ներդրված գումար",
-  //       data: [0, 20, 50], // Example values (Now -> 2030 -> 2035)
-  //     },
-  //     {
-  //       name: "Ընդհանուր եկամուտ",
-  //       data: [0, 8, 15], // Example values for second line
-  //     },
-  //   ],
-  //   options: {
-  //     chart: {
-  //       height: 500,
-  //       type: "area",
-  //       toolbar: {
-  //         show: false,
-  //       },
-  //     },
-  //     dataLabels: {
-  //       enabled: false,
-  //     },
-  //     stroke: {
-  //       curve: "smooth",
-  //     },
-  //     xaxis: {
-  //       categories: ["Now", "2030", "2035"], // custom x-axis labels
-  //     },
-  //     yaxis: {
-  //       labels: {
-  //         formatter: function (val) {
-  //           return val + "M"; // add "M" suffix
-  //         },
-  //       },
-  //     },
-  //     tooltip: {
-  //       x: {
-  //         format: "dd/MM/yy HH:mm",
-  //       },
-  //     },
-  //   },
-  // });
+  }, [year, investAmount, startDeposit, expectedRate]);
 
   const yearChanged = (year) => {
     setYear(year[1]);
@@ -152,16 +96,7 @@ const InvestCalculator = () => {
     setYear(val);
   };
 
-  useEffect(() => {
-    // const data = calculateInvestment({
-    //   PV: 10000, // Initial deposit
-    //   PMT: 5000, // Annual contribution
-    //   r: 0.07, // 7% expected annual return
-    //   n: 10, // 10 years
-    //   frequency: "monthly", // Compounding monthly
-    // });
-    // console.log("datadata", data);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="calculator-container container">
@@ -248,18 +183,6 @@ const InvestCalculator = () => {
               </div>
             </div>
             <div className="form-input-wrapper">
-              <label htmlFor="">Կուտակման հաճախականություն</label>
-
-              <Select
-                options={options}
-                styles={customStyles}
-                className="custom-select"
-                value={accumulationFrequency} // controlled value
-                onChange={(selected) => setAccumulationFrequency(selected)} // update state
-              />
-            </div>
-
-            <div className="form-input-wrapper">
               <label for="expected-rate">Կանխատեսվող եկամտաբերություն</label>
               <div className="input-wrap">
                 <input
@@ -282,7 +205,7 @@ const InvestCalculator = () => {
               <div className="total-balace">
                 <div className="text">Ընդհանուր մնացորդ՝</div>
 
-                <div className="total">51,998,571 ֏</div>
+                <div className="total">{totalBalance} ֏</div>
               </div>
 
               <div className="legend">

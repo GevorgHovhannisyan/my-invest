@@ -153,6 +153,17 @@
       }
     }
 
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Remove arrows in Firefox */
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
     @include mediaTo($size1366) {
       padding: 24px 48px 48px 48px;
     }

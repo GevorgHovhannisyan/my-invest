@@ -1,32 +1,40 @@
-export const calculateInvestment = (PV, PMT, r, n, frequency) => {
-  console.log({ PV, PMT, r, n, frequency });
-
-  const freqMap = {
-    annual: 1,
-    "semi-annual": 2,
-    quarterly: 4,
-    monthly: 12,
-  };
-  const f = freqMap[frequency] || 1;
+export function calculateInvestment(startDeposit, year, expectedRate, investAmount) {
   const results = [];
+  const P = Number(startDeposit);
+  const PMT = Number(investAmount);
+  const tYears = Number(year);
+  const r = Number(expectedRate) / 100; // convert % → decimal
+  const n = 12; // monthly compounding
 
-  for (let t = 0; t <= n; t++) {
-    const totalBalance =
-      PV * Math.pow(1 + r / f, f * t) +
-      PMT * ((Math.pow(1 + r / f, f * t) - 1) / (r / f));
+  // --- Add first element for current year (year = 0) ---
+  results.push({
+    year: 0,
+    totalBalance: Number(P.toFixed(2)), // initial deposit only
+    investAmount: Number(P.toFixed(2)), // invested amount so far
+  });
 
-    const investAmount = PV + PMT * t;
+  // --- Compound for each year ---
+  for (let t = 1; t <= tYears; t++) {
+    // compound initial deposit
+    const compoundPrincipal = P * Math.pow(1 + r / n, n * t);
+
+    // compound monthly contributions
+    const compoundContrib = PMT * ((Math.pow(1 + r / n, n * t) - 1) / (r / n));
+
+    const totalBalance = compoundPrincipal + compoundContrib;
+
+    // total invested up to this year
+    const totalInvested = P + PMT * 12 * t;
+
     results.push({
       year: t,
-      totalBalance,
-      investAmount,
+      totalBalance: Number(totalBalance.toFixed(2)),
+      investAmount: Number(totalInvested.toFixed(2)),
     });
   }
 
-  console.log("results", results);
-
   return results;
-};
+}
 
 export const customStyles = {
   control: (base, state) => ({

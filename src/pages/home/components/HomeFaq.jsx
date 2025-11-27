@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const HomeFaq = () => {
+  const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const [openedFaq, setOpenedFaq] = useState({});
 
@@ -20,6 +21,7 @@ const HomeFaq = () => {
     },
   ];
 
+
   return (
     <div className="container home-faq">
       <div className="home-faq-inner">
@@ -37,8 +39,7 @@ const HomeFaq = () => {
             հարթակի օգտագործման մասին
           </div>
           <div className="all-questions">
-            <button className="bordered">
-             <NavLink to="/faq">
+            <button className="bordered"  onClick={() => navigate("/faq")}>
                 <span>բոլոր հարցերը</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +54,6 @@ const HomeFaq = () => {
                     stroke-width="2"
                   />
                 </svg>
-              </NavLink>
             </button>
           </div>
         </div>
