@@ -5,12 +5,15 @@ import "./assets/icomoon/style.css";
 import "./index.css";
 import "./assets/scss/main.scss";
 import App from "./App.jsx";
-import store from './redux/store';
+import store from "./redux/store";
+import TranslateProvider from "./react-intl";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      <TranslateProvider>
+        <App />
+      </TranslateProvider>
     </Provider>
   </StrictMode>
 );

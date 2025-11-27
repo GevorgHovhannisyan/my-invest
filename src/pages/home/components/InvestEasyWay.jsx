@@ -3,10 +3,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 const InvestEasyWay = () => {
   const ids = ["XvyaxLWnb6s", "qo6ReBYMcyc", "6TNm49DeE7U", "QX2gR7GvwW8"];
-    const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   const settings = {
     // infinite: true,
@@ -72,10 +73,16 @@ const InvestEasyWay = () => {
     <div className="invest-easy-way">
       <div className="invest-easy-way-inner">
         <div className="head-text-block">
-          <div className="subtitle">MyInvest Vlog</div>
+          <div className="subtitle">
+            <FormattedMessage id="videos_subtitle" />
+          </div>
           <div className="title">
-            Ներդրումները
-            <span> պարզ</span> բառերով
+            <FormattedMessage id="videos_title_p1" />
+            <span>
+              {" "}
+              <FormattedMessage id="videos_title_p2" />
+            </span>{" "}
+            <FormattedMessage id="videos_title_p3" />
           </div>
         </div>
         <div className="slider-container">
@@ -119,7 +126,7 @@ const InvestEasyWay = () => {
         </div>
         <div className="all-videos">
           <button className="bordered">
-            բոլոր տեսահոլովակները
+            <FormattedMessage id="videos_see_all" />
             <span className="icon-arrow-right-after"></span>
           </button>
         </div>

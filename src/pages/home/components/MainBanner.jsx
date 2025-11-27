@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../../../assets/scss/pages/home/home.scss";
 import Header from "../../../components/header";
 import AppDownloadModal from "./AppDownloadModal";
+import { FormattedMessage } from "react-intl";
 
 const MainTopBanner = () => {
   const [topBannerClass, setTopBannerClass] = useState("");
@@ -23,21 +24,29 @@ const MainTopBanner = () => {
       <span className="right-bg"></span>
       <div className="top-inner">
         <div className="title_asd">
-          <div className="invest-word">Ներդրումները</div>
+          <div className="invest-word">
+            {" "}
+            <FormattedMessage id="hero_section_title" />
+          </div>
           <div className="inner_title">
-            <span>քո</span>
-            <span>ափում</span>
+            <span>
+              {" "}
+              <FormattedMessage id="hero_section_your" />
+            </span>
+            <span>
+              {" "}
+              <FormattedMessage id="hero_section_app" />
+            </span>
           </div>
         </div>
         <div className="top-description">
           <div className="inner-description">
-            Միացիր խելացի ներդրողների համայնքին և ստեղծիր քո ֆինանսական
-            հաջողությունը՝ օգտվելով MyInvest-ի ցածր միջնորդավճարներից և վստահելի
-            սպասարկումից։
+            <FormattedMessage id="hero_section_text" />
           </div>
 
-          <button class="description-btn" onClick={setOpened}>
-            Ներբեռնել<span class="icon-arrow-right"></span>
+          <button className="description-btn" onClick={() => setOpened(true)}>
+            <FormattedMessage id="download_btn" />
+            <span className="icon-arrow-right"></span>
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import "../../../assets/scss/imports/how-to-buy/animation.css";
 import gsap from "gsap";
+import { FormattedMessage } from "react-intl";
 
 const HowToBuy = () => {
   const tl = gsap.timeline({
@@ -354,9 +355,15 @@ const HowToBuy = () => {
           <ul class="items">
             <li className="matrix-item htb">
               <div class="text-block">
-                <div className="subtitle">5 պարզ քայլ</div>
+                <div className="subtitle">
+                  <FormattedMessage id="how_to_buy_subtitle" />
+                </div>
                 <div className="title">
-                  Ինչպե՞ս <span>գնել</span> արժեթղթեր MyInvest-ում
+                  <FormattedMessage id="how_to_buy_title_p1" />{" "}
+                  <span>
+                    <FormattedMessage id="how_to_buy_title_p2" />
+                  </span>{" "}
+                  <FormattedMessage id="how_to_buy_title_p3" />
                 </div>
                 <div className="view-video">
                   <svg
@@ -373,16 +380,19 @@ const HowToBuy = () => {
                       stroke-width="2"
                     />
                   </svg>
-                  <span>դիտել վիդեո ուղեցույցը</span>
+                  <span>
+                    <FormattedMessage id="view_video_guide" />
+                  </span>
                 </div>
               </div>
             </li>
             <li className="matrix-item step-1" ref={registerStep(0)}>
               <div className="top-part">
-                <div className="step">քայլ 1</div>
+                <div className="step">
+                  <FormattedMessage id="how_to_buy_step" /> 1
+                </div>
                 <div className="description">
-                  Ներբեռնիր MyAmeria հավելվածը <span>App Store</span>-ից կամ{" "}
-                  <span>Play Store</span>-ից
+                  <FormattedMessage id="how_to_buy_step_1" />
                 </div>
               </div>
               <div className="bottom-part">
@@ -414,8 +424,12 @@ const HowToBuy = () => {
               onMouseLeave={resetSlider}
             >
               <div className="top-part">
-                <div className="step">քայլ 2</div>
-                <div className="description">Գտիր MyInvest-ը Apps բաժնում</div>
+                <div className="step">
+                  <FormattedMessage id="how_to_buy_step" /> 2
+                </div>
+                <div className="description">
+                  <FormattedMessage id="how_to_buy_step_2" />
+                </div>
               </div>
               <div className="bottom-part" ref={bottomRef}>
                 <img src="/images/how-to-buy/fake-invest.png" alt="" />
@@ -427,8 +441,12 @@ const HowToBuy = () => {
             </li>
             <li className="step-3 matrix-item" ref={registerStep(2)}>
               <div className="top-part">
-                <div className="step">քայլ 3</div>
-                <div className="description">Ընտրիր «Ինչ գնել» բաժինը</div>
+                <div className="step">
+                  <FormattedMessage id="how_to_buy_step" /> 3
+                </div>
+                <div className="description">
+                  <FormattedMessage id="how_to_buy_step_3" />
+                </div>
               </div>
               <div className="bottom-part">
                 <div className="menu-icons">
@@ -456,7 +474,9 @@ const HowToBuy = () => {
             </li>
             <li className="step-4 matrix-item" ref={registerStep(3)}>
               <div className="top-part ">
-                <div className="step">քայլ 4</div>
+                <div className="step">
+                  <FormattedMessage id="how_to_buy_step" /> 4
+                </div>
                 <div className="description">
                   Ընտրիր արժեթուղթ առկա ցանկերից
                 </div>
@@ -502,8 +522,12 @@ const HowToBuy = () => {
             </li>
             <li className="matrix-item step-5" ref={registerStep(4)}>
               <div className="top-part">
-                <div className="step">քայլ 5</div>
-                <div className="description">Քաշիր «Գնել» կոճակը</div>
+                <div className="step">
+                  <FormattedMessage id="how_to_buy_step" /> 5
+                </div>
+                <div className="description">
+                  <FormattedMessage id="how_to_buy_step_5" />
+                </div>
               </div>
               <div className="bottom-part">
                 <div className="buy-slide-block">

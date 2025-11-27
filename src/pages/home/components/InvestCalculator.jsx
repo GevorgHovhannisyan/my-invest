@@ -2,8 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
+import { FormattedMessage, useIntl } from "react-intl";
 import { calculateInvestment } from "../../../utils/calculatorUtils";
+
 const InvestCalculator = () => {
+  const intl = useIntl();
   const [year, setYear] = useState(10);
   const [investAmount, setInvestAmount] = useState(0);
   const [startDeposit, setStartDeposit] = useState(50000);
@@ -32,24 +35,25 @@ const InvestCalculator = () => {
     );
 
     if (results.length) {
-      const balance = Number(results[results.length - 1]?.totalBalance).toLocaleString(
-        "en-US",
-        {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        }
-      );
+      const balance = Number(
+        results[results.length - 1]?.totalBalance
+      ).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
       setTotalBalance(balance);
     }
 
     return {
       series: [
         {
-          name: "Ընդհանուր ներդրված գումար",
+          name: intl.formatMessage({
+            id: "compound_calculator_total_invested",
+          }),
           data: results.map((d) => Math.round(d.investAmount)),
         },
         {
-          name: "Ընդհանուր եկամուտ",
+          name: intl.formatMessage({ id: "compound_calculator_total_balance" }),
           data: results.map((d) => Math.round(d.totalBalance)),
         },
       ],
@@ -61,14 +65,19 @@ const InvestCalculator = () => {
         dataLabels: {
           enabled: false,
         },
+        stroke: {
+          curve: "straight",
+        },
         xaxis: {
           categories: results.map((d) =>
-            d.year === 0 ? "Now" : new Date().getFullYear() + d.year
+            d.year === 0
+              ? intl.formatMessage({ id: "compound_calculator_now" })
+              : new Date().getFullYear() + d.year
           ),
         },
         yaxis: {
           labels: {
-            formatter: (val) => val.toLocaleString() + "֏", // Armenian dram symbol example
+            formatter: (val) => val.toLocaleString() + "֏",
           },
         },
         tooltip: {
@@ -78,7 +87,7 @@ const InvestCalculator = () => {
         },
       },
     };
-  }, [year, investAmount, startDeposit, expectedRate]);
+  }, [year, investAmount, startDeposit, expectedRate, intl]);
 
   const yearChanged = (year) => {
     setYear(year[1]);
@@ -102,13 +111,19 @@ const InvestCalculator = () => {
     <div className="calculator-container container">
       <div className="calculator-container-inner">
         <div className="calculator-heading">
-          <div className="head">քո եկամտաբերությունը</div>
-          <div className="title">Ներդրումային հաշվիչ</div>
+          <div className="head">
+            <FormattedMessage id="compound_calculator_subtitle" />
+          </div>
+          <div className="title">
+            <FormattedMessage id="compound_calculator_title" />
+          </div>
         </div>
         <div className="calculator-inner">
           <div className="calculate-part">
             <div className="form-input-wrapper">
-              <label htmlFor="years">տարիների քանակ</label>
+              <label htmlFor="years">
+                <FormattedMessage id="compound_calculator_years" />
+              </label>
               <input
                 type="number"
                 name=""
@@ -139,7 +154,9 @@ const InvestCalculator = () => {
             </div>
 
             <div className="form-input-wrapper">
-              <label htmlFor="years">Ամսական ներդրում</label>
+              <label htmlFor="years">
+                <FormattedMessage id="compound_calculator_monthly_contrib" />
+              </label>
               <input
                 type="number"
                 name=""
@@ -169,7 +186,9 @@ const InvestCalculator = () => {
             </div>
 
             <div className="form-input-wrapper">
-              <label for="month-invest">Սկզբնական ավանդը</label>
+              <label htmlFor="month-invest">
+                <FormattedMessage id="compound_calculator_initital_dep" />
+              </label>
               <div className="input-wrap">
                 <input
                   id="month-invest"
@@ -183,7 +202,9 @@ const InvestCalculator = () => {
               </div>
             </div>
             <div className="form-input-wrapper">
-              <label for="expected-rate">Կանխատեսվող եկամտաբերություն</label>
+              <label htmlFor="expected-rate">
+                <FormattedMessage id="compound_calculator_exp_return" />
+              </label>
               <div className="input-wrap">
                 <input
                   id="expected-rate"
@@ -203,7 +224,9 @@ const InvestCalculator = () => {
           <div className="chart-part">
             <div className="chart-info">
               <div className="total-balace">
-                <div className="text">Ընդհանուր մնացորդ՝</div>
+                <div className="text">
+                  <FormattedMessage id="compound_calculator_total_balance" />՝
+                </div>
 
                 <div className="total">{totalBalance} ֏</div>
               </div>
@@ -212,11 +235,15 @@ const InvestCalculator = () => {
                 <ul>
                   <li>
                     <div className="legend-indeficator blue"></div>
-                    <span>Ընդհանուր ներդրված գումար</span>
+                    <span>
+                      <FormattedMessage id="compound_calculator_total_invested" />
+                    </span>
                   </li>
                   <li>
                     <div className="legend-indeficator green"></div>
-                    <span>Ընդհանուր եկամուտ</span>
+                    <span>
+                      <FormattedMessage id="compound_calculator_total_balance" />
+                    </span>
                   </li>
                 </ul>
               </div>

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 
 const AppDownloadModal = ({ opened, closeModal }) => {
   useEffect(() => {

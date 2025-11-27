@@ -1,16 +1,16 @@
 import { IntlProvider } from "react-intl";
+import { useSelector } from "react-redux";
 import localTranslations from "../translations";
-import { useParams } from "react-router-dom";
+import { languageSelector } from "../redux/slices/langauge/langauge";
 import { LanguageTransCodes } from "../constants/langauge";
 
 const TranslateProvider = ({ children }) => {
-  const params = useParams();
-  const langID = params.lang;
+  const langID = useSelector(languageSelector);
 
   const message = localTranslations[langID || LanguageTransCodes.AM];
 
   return (
-    <IntlProvider locale={navigator.languages[1]} messages={message}>
+    <IntlProvider locale={langID || LanguageTransCodes.AM} messages={message}>
       {children}
     </IntlProvider>
   );

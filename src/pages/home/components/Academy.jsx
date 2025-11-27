@@ -1,4 +1,5 @@
 import "../../../assets/scss/pages/home/academy-btn-anim.css";
+import { FormattedMessage } from "react-intl";
 
 const Academy = () => {
   return (
@@ -8,24 +9,30 @@ const Academy = () => {
           <li className="academy-blocks-item tele">
             <div className="academy-blocks-item-inner">
               <div className="left-part">
-                <div className="subtitle">դարձիր ներդրումների գիտակ</div>
-                <div className="title">Արի մեր Telegram</div>
+                <div className="subtitle">
+                  <FormattedMessage id="telegram_subtitle" />
+                </div>
+                <div className="title">
+                  <FormattedMessage id="telegram_title" />
+                </div>
                 <div className="list-items">
                   <ul>
                     <li>
                       <span className="icon-checked"></span>
-                      <div className="description">Կրթական նյութեր</div>
-                    </li>
-                    <li>
-                      <span className="icon-checked"></span>
                       <div className="description">
-                        Գաղափարներ և խորհուրդներ մասնագետներից
+                        <FormattedMessage id="telegram_item1" />
                       </div>
                     </li>
                     <li>
                       <span className="icon-checked"></span>
                       <div className="description">
-                        Ներդրումային շուկաների պատկերը` թվերով
+                        <FormattedMessage id="telegram_item2" />
+                      </div>
+                    </li>
+                    <li>
+                      <span className="icon-checked"></span>
+                      <div className="description">
+                        <FormattedMessage id="telegram_item3" />
                       </div>
                     </li>
                   </ul>
@@ -33,7 +40,7 @@ const Academy = () => {
 
                 <button className="telegram be-investor-btn">
                   <div className="telegram-be-investor-anim-block">
-                    ՄԻԱՆԱԼ ՄԵՐ TELEGRAM-ԻՆ
+                    <FormattedMessage id="telegram_btn" />
                     <span className="icon-arrow-right-after"></span>
                   </div>
                 </button>
@@ -44,24 +51,30 @@ const Academy = () => {
           <li className="academy-blocks-item academyy">
             <div className="academy-blocks-item-inner">
               <div className="left-part">
-                <div className="subtitle">դարձիր ներդրումների գիտակ</div>
-                <div className="title">MyInvest Academy</div>
+                <div className="subtitle">
+                  <FormattedMessage id="academy_subtitle" />
+                </div>
+                <div className="title">
+                  <FormattedMessage id="academy_title" />
+                </div>
                 <div className="list-items">
                   <ul>
                     <li>
                       <span className="icon-checked"></span>
-                      <div className="description">Կրթական նյութեր</div>
-                    </li>
-                    <li>
-                      <span className="icon-checked"></span>
                       <div className="description">
-                        Գաղափարներ և խորհուրդներ մասնագետներից 
+                        <FormattedMessage id="academy_item1" />
                       </div>
                     </li>
                     <li>
                       <span className="icon-checked"></span>
                       <div className="description">
-                        Ներդրումային շուկաների պատկերը` թվերով
+                        <FormattedMessage id="academy_item2" />
+                      </div>
+                    </li>
+                    <li>
+                      <span className="icon-checked"></span>
+                      <div className="description">
+                        <FormattedMessage id="academy_item3" />
                       </div>
                     </li>
                   </ul>
@@ -69,7 +82,7 @@ const Academy = () => {
 
                 <button className="academy be-investor-btn">
                   <div className="academy-be-investor-anim-block">
-                    Միանալ Ameria Academy-ին
+                    <FormattedMessage id="academy_btn_full" />
                     <span className="icon-arrow-right-after"></span>
                   </div>
                 </button>

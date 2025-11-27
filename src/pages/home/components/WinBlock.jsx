@@ -1,3 +1,4 @@
+import { FormattedMessage } from "react-intl";
 import "../../../assets/scss/imports/win/animation.css";
 
 const WinBlock = () => {
@@ -22,7 +23,7 @@ const WinBlock = () => {
                     խաղարկությանը
                   </div>
                   <button class="card-btn">
-                    Բացել Հաշիվ
+                    <FormattedMessage id="open_account_btn" />
                     <span className="icon-arrow-right"></span>
                   </button>
                 </div>
@@ -82,29 +83,32 @@ const WinBlock = () => {
         <div className="bond-stock-info">
           <div className="info-block">
             <img src="/images/win-block/bond.png" alt="Bonds" />
-            <span className="title">Պարտատոմսեր</span>
+            <span className="title">
+              <FormattedMessage id="bonds_title" />
+            </span>
             <p className="description">
-              Ներդրիր միանգամից մի քանի ակտիվում՝ նվազեցնելով ռիսկերն ու
-              հավասարակշռելով քո ներդրումային եկամուտը
+              <FormattedMessage id="bonds_text" />
             </p>
           </div>
           <span className="middle-border"></span>
           <div className="info-block">
             <img src="/images/win-block/stock.png" alt="Stocks" />
-            <span className="title">Բաժնետոմսեր</span>
+            <span className="title">
+              <FormattedMessage id="stocks_title" />
+            </span>
             <p className="description">
-              Ներդրիր միանգամից մի քանի ակտիվում՝ նվազեցնելով ռիսկերն ու
-              հավասարակշռելով քո ներդրումային եկամուտը
+              <FormattedMessage id="stocks_text" />
             </p>
           </div>
           <span className="middle-border"></span>
 
           <div className="info-block">
             <img src="/images/win-block/invest-fonds.png" alt="Invest" />
-            <span className="title">Ներդրումային ֆոնդեր</span>
+            <span className="title">
+              <FormattedMessage id="etfs_title" />
+            </span>
             <p className="description">
-              Ներդրիր միանգամից մի քանի ակտիվում՝ նվազեցնելով ռիսկերն ու
-              հավասարակշռելով քո ներդրումային եկամուտը
+              <FormattedMessage id="etfs_text" />
             </p>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { FormattedMessage } from "react-intl";
+
 const BePartner = () => {
   const partners = [
     {
@@ -61,7 +63,9 @@ const BePartner = () => {
     <div className="partner-container">
       <div className="text-part">
         <div className="subtitle">մեծ մաշտաբներ</div>
-        <div className="title">Դարձիր ընկերության բաժնետեր</div>
+        <div className="title">
+          <FormattedMessage id="be_partner_title" />
+        </div>
         <button className="bordered">
           Որոնել արժեթղթեր{" "}
           <svg

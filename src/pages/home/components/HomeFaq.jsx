@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 const HomeFaq = () => {
   const navigate = useNavigate();
@@ -21,39 +22,41 @@ const HomeFaq = () => {
     },
   ];
 
-
   return (
     <div className="container home-faq">
       <div className="home-faq-inner">
         <div className="left">
           <div className="most-questions">
-            <span>Հաճախ տրվող հարցեր</span>
+            <span>
+              <FormattedMessage id="faq_title" />
+            </span>
             <img src="/images/icons/faq-question.svg" alt="" />
           </div>
 
           <div className="title">
-            Հաճախ <br /> տրվող հարցեր
+            <FormattedMessage id="faq_title" />
           </div>
           <div className="description">
-            Ամեն ինչ՝ ներդրումների, հաշվի բացման, համալրման, հարկերի և մեր
-            հարթակի օգտագործման մասին
+            <FormattedMessage id="faq_text" />
           </div>
           <div className="all-questions">
-            <button className="bordered"  onClick={() => navigate("/faq")}>
-                <span>բոլոր հարցերը</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                  fill="none"
-                >
-                  <path
-                    d="M6 12.5L18 12.5M18 12.5L12.3333 18.5M18 12.5L12.3333 6.5"
-                    stroke="#72BF44"
-                    stroke-width="2"
-                  />
-                </svg>
+            <button className="bordered" onClick={() => navigate("/faq")}>
+              <span>
+                <FormattedMessage id="faq_btn" />
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+              >
+                <path
+                  d="M6 12.5L18 12.5M18 12.5L12.3333 18.5M18 12.5L12.3333 6.5"
+                  stroke="#72BF44"
+                  stroke-width="2"
+                />
+              </svg>
             </button>
           </div>
         </div>
