@@ -7,9 +7,9 @@ import { calculateInvestment } from "../../../utils/calculatorUtils";
 
 const InvestCalculator = () => {
   const intl = useIntl();
-  const [year, setYear] = useState(10);
-  const [investAmount, setInvestAmount] = useState(0);
-  const [startDeposit, setStartDeposit] = useState(50000);
+  const [year, setYear] = useState(20);
+  const [investAmount, setInvestAmount] = useState(50000);
+  const [startDeposit, setStartDeposit] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const [expectedRate, setExpectedRate] = useState(10); // default 10%
@@ -53,7 +53,9 @@ const InvestCalculator = () => {
           data: results.map((d) => Math.round(d.investAmount)),
         },
         {
-          name: intl.formatMessage({ id: "compound_calculator_total_balance" }),
+          name: intl.formatMessage({
+            id: "compound_calculator_total_balance",
+          }),
           data: results.map((d) => Math.round(d.totalBalance)),
         },
       ],
@@ -69,6 +71,8 @@ const InvestCalculator = () => {
           curve: "straight",
         },
         xaxis: {
+          tickAmount: 4,
+
           categories: results.map((d) =>
             d.year === 0
               ? intl.formatMessage({ id: "compound_calculator_now" })
@@ -77,12 +81,47 @@ const InvestCalculator = () => {
         },
         yaxis: {
           labels: {
-            formatter: (val) => val.toLocaleString() + "֏",
+            formatter: (val) => val.toLocaleString() + " ",
           },
         },
         tooltip: {
-          y: {
-            formatter: (val) => val.toLocaleString(),
+          shared: true,
+          intersect: false,
+          custom: function ({ series, dataPointIndex, w }) {
+            const invested = series[0][dataPointIndex];
+            const balance = series[1][dataPointIndex];
+            const profit = balance - invested;
+
+            return `
+                <div className="chart-tooltip">
+                  <span className="year">
+          ${w.globals.categoryLabels[dataPointIndex]} 
+          ${intl.formatMessage({ id: "year" })}
+        </span>
+
+              <div className="total-amount">
+                <span>${
+                  w.globals.seriesNames[1]
+                }</span> <span>${balance.toLocaleString()} </span>
+              </div>
+              <div className="total-invested">
+              <div>
+                <span>${
+                  w.globals.seriesNames[0]
+                }</span> <span>${invested.toLocaleString()}  </span>
+              </div>
+                
+              </div>
+              <div className="total-profit">
+              <div>
+                <span> ${intl.formatMessage({
+                  id: "compound_calculator_total_profit",
+                })}</span>
+                <span> ${profit.toLocaleString()} </span>
+              </div>
+               </div>
+            </div>
+    `;
           },
         },
       },
@@ -167,7 +206,7 @@ const InvestCalculator = () => {
               <img src="/images/calculator/scale.svg" alt="" />
 
               <span className="suffix" aria-hidden="true">
-                ֏
+                {/* ֏ */}
               </span>
               <RangeSlider
                 className="single-thumb custom-slider"
@@ -180,8 +219,8 @@ const InvestCalculator = () => {
                 onInput={investAmountChanged}
               />
               <div className="range">
-                <span>50.000 ֏</span>
-                <span>5.000.000 ֏</span>
+                <span>50.000 </span>
+                <span>5.000.000 </span>
               </div>
             </div>
 
@@ -197,7 +236,7 @@ const InvestCalculator = () => {
                   onInput={(e) => setStartDeposit(e.target.value)}
                 />
                 <span className="suffix no-scale" aria-hidden="true">
-                  ֏
+                  {/* ֏ */}
                 </span>
               </div>
             </div>
@@ -215,7 +254,7 @@ const InvestCalculator = () => {
                   placeholder="Enter %"
                 />
                 <span className="suffix no-scale" aria-hidden="true">
-                  ֏
+                  %
                 </span>
               </div>
             </div>

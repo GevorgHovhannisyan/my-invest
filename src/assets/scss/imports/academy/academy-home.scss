@@ -251,4 +251,23 @@
       font-size: 12px;
     }
   }
+  .academy-be-investor-anim-block {
+    color: var(--White, #fff);
+    font-family: $semibold;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1.82px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    &:hover {
+      background: #61a527;
+    }
+  }
+
+  .telegram-be-investor-anim-block {
+    transition: 0.3s;
+    &:hover {
+      background: #0273b7;
+    }
+  }
 }

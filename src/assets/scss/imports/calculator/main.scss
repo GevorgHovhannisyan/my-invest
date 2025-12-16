@@ -42,6 +42,7 @@
       flex-direction: column;
       padding-right: 72px;
       justify-content: space-between;
+
       @include mediaTo($size1366) {
         padding-right: 48px;
         max-width: 461px;
@@ -75,10 +76,8 @@
       margin-top: 20px;
       label {
         color: var(--Gray-WEB-UI-500, #737373);
-        font-family: "Montserrat arm";
+        font-family: $medium;
         font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
         line-height: 16px; /* 133.333% */
         letter-spacing: 0.72px;
         text-transform: uppercase;
@@ -202,7 +201,7 @@
     }
 
     #chart {
-      padding: 32px 32px 0 32px;
+      padding: 32px 12px 0 32px;
 
       @include mediaTo($size1200) {
         padding: 32px 0 0 0;
@@ -211,10 +210,8 @@
 
     .text {
       color: var(--Gray-WEB-UI-500, #737373);
-      font-family: "Montserrat arm";
+      font-family: $medium;
       font-size: 12px;
-      font-style: normal;
-      font-weight: 500;
       line-height: 16px; /* 133.333% */
       letter-spacing: 0.72px;
       text-transform: uppercase;
@@ -226,10 +223,8 @@
 
     .total {
       color: var(--Brand-500, #72bf44);
-      font-family: "Montserrat arm";
+      font-family: $bold;
       font-size: 31px;
-      font-style: normal;
-      font-weight: 700;
       line-height: 24px; /* 77.419% */
 
       @include mediaTo($size1200) {
@@ -241,6 +236,7 @@
       li {
         display: flex;
         align-items: center;
+        margin-bottom: 8px;
 
         span {
           color: var(--Gray-WEB-UI-500, #737373);
@@ -250,10 +246,6 @@
           font-style: normal;
           font-weight: 500;
           line-height: normal;
-        }
-
-        &:first-child {
-          margin-bottom: 8px;
         }
       }
       &-indeficator {
@@ -275,5 +267,96 @@
 
   .apexcharts-legend {
     display: none;
+  }
+}
+
+.chart-tooltip {
+  display: flex;
+  min-width: 400px;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--sds-size-depth-0) 8px 40px
+    var(--sds-size-depth-negative-200) rgba(12, 12, 13, 0.1);
+
+  .year {
+    color: var(--Gray-WEB-UI-500, #737373);
+    font-family: $medium;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+    margin-left: 18px;
+  }
+
+  .total-amount {
+    border-radius: 8px;
+    background: var(--Gray-WEB-UI-100, #f5f5f5);
+    padding: 4px 16px;
+    color: #000;
+    font-family: $boldMar;
+    font-size: 15px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .total-amount,
+  .total-invested,
+  .total-profit {
+    min-width: 371px;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+  }
+
+  .total-invested,
+  .total-profit {
+    color: var(--Black, #000);
+    font-family: $regularMar;
+    font-size: 15px;
+    line-height: 26px;
+    div {
+      min-width: 371px;
+    }
+  }
+
+  .total-invested {
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 5px;
+      height: 16px;
+      border-radius: 24px;
+      background: #72bf44;
+      margin-right: 11px;
+    }
+  }
+
+  .total-profit {
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 5px;
+      height: 16px;
+      border-radius: 24px;
+      background: #0e9cff;
+      margin-right: 11px;
+    }
   }
 }

@@ -6,7 +6,12 @@ import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 const InvestEasyWay = () => {
-  const ids = ["XvyaxLWnb6s", "qo6ReBYMcyc", "6TNm49DeE7U", "QX2gR7GvwW8"];
+  const ids = [
+    { id: "XvyaxLWnb6s", image: "/images/invest-easy-way/about-invest.jpg" },
+    { id: "qo6ReBYMcyc", image: "/images/invest-easy-way/etf.jpg" },
+    { id: "6TNm49DeE7U", image: "/images/invest-easy-way/about-bonds.jpg" },
+    { id: "QX2gR7GvwW8", image: "/images/invest-easy-way/about-vouchers.jpg" },
+  ];
   const [videos, setVideos] = useState([]);
 
   const settings = {
@@ -42,10 +47,10 @@ const InvestEasyWay = () => {
     ],
   };
 
-  async function fetchVideos(videoIds) {
-    const requests = videoIds.map((id) =>
+  async function fetchVideos(videos) {
+    const requests = videos.map((video) =>
       fetch(
-        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`
+        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.id}&format=json`
       ).then((res) => res.json())
     );
 
@@ -53,13 +58,16 @@ const InvestEasyWay = () => {
       const results = await Promise.all(requests);
 
       const mapped = results.map((data, index) => ({
-        id: videoIds[index],
+        id: videos[index].id,
         title: data.title,
-        thumbnail: data.thumbnail_url,
+        thumbnail: ids[index].image,
         author: data.author_name,
       }));
 
       setVideos(mapped);
+
+      console.log('mapped', mapped);
+      
     } catch (err) {
       console.error("oEmbed error:", err);
     }

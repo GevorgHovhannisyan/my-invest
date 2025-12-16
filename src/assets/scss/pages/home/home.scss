@@ -6,15 +6,38 @@
   height: 892px;
   position: relative;
   overflow: hidden;
-
-  // background-image: url("/images/banner/banner-dots.gif");
-
-  // background: url("/images/left-back.png") left top no-repeat,
-  //   url("/images/right-back.png") right top no-repeat;
-  background-size: 50% 100%, 50% 100%;
-  /* Each image takes half width */
-  background-repeat: no-repeat;
   background-color: black;
+}
+
+/* Pseudo element for the background image */
+.main-top-banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/images/banner/main.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out; /* smooth fade */
+  z-index: 0;
+}
+
+/* When loaded → fade in */
+.main-top-banner.loaded::after {
+  opacity: 1;
+}
+
+.main-top-banner {
+  @include mediaTo($size960) {
+    background-image: url("/images/banner/tablet.png");
+  }
+
+  @include mediaTo($size640) {
+    background-image: url("/images/banner/mobile.png");
+  }
 
   .left-bg {
     background: url("/images/left-back.png");
@@ -25,9 +48,11 @@
     display: block;
     height: 100%;
     position: absolute;
-    left: -100vw;
+    left: 0;
     top: 0;
-
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+    transform: translateX(-20px); // optional: start slightly shifted
     @include mediaTo($size1440) {
       background-image: url("/images/home-left-back-1366.png");
     }
@@ -55,9 +80,12 @@
     display: block;
     height: 100%;
     position: absolute;
-    right: -100vw;
+    right: 0;
     top: 0;
-
+    top: 0;
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+    transform: translateX(-20px); // optional: start slightly shifted
     @include mediaTo($size1440) {
       background-image: url("/images/home-right-back-1366.png");
     }
@@ -107,18 +135,19 @@
   }
 
   .left-bg {
-    left: 0;
-    @include animStyle(left 2s);
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .right-bg {
-    right: 0;
-    @include animStyle(right 2s);
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .left_img {
     transform: rotate(-10deg);
     left: 50px;
+    // z-index: 999;
     @include animStyle(all 2s);
     opacity: 0.7;
     @include mediaTo($size1366) {
@@ -142,6 +171,7 @@
   .right_img {
     transform: rotate(10deg);
     right: 50px;
+    // z-index: 999;
     @include animStyle(all 2s);
     opacity: 0.7;
     @include mediaTo($size1366) {
@@ -212,9 +242,11 @@
   }
 }
 
-.title_asd {
+.title_banner {
   display: flex;
   flex-direction: column;
+  z-index: 1;
+  position: relative;
 }
 
 .invest-word {
@@ -279,7 +311,7 @@
   position: relative;
   bottom: -400px;
   opacity: 0;
-
+    z-index: 1;
   @include mediaTo($size1366) {
     max-width: 537px;
     margin: 0 auto;
@@ -297,12 +329,12 @@
 .description-btn {
   display: flex;
   align-items: center;
-  background: #7cc24b;
-  color: #fff;
+  color: #000000;
+  background-color: #6dc719;
   font-size: 22px;
-  padding: 16px 44px;
   border: none;
-  border-radius: 18px;
+  border-radius: 12px;
+  padding: 12px 16px;
   cursor: pointer;
   font-family: inherit;
   font-weight: 600;
@@ -312,6 +344,14 @@
   line-height: 24px;
   text-transform: uppercase;
   letter-spacing: 2px;
+
+  &:hover {
+    background: #61a527;
+  }
+
+  .icon-arrow-right {
+    padding-left: 12px;
+  }
 
   @include mediaTo($size1366) {
     margin-top: 20px;
@@ -350,7 +390,7 @@
 .center_img {
   max-width: 486px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   position: relative;
   top: -200px;
@@ -360,6 +400,8 @@
 .left_img {
   max-width: 400px;
   width: 100%;
+  z-index: 1;
+  
   filter: blur(1px);
   @include mediaTo($size1280) {
     opacity: 0;
@@ -387,16 +429,6 @@
   backdrop-filter: blur(14.40000057220459px);
   right: 450px;
   position: relative;
-  // &::before {
-  //   content: "";
-  //   position: absolute;
-  //   backdrop-filter: blur(14.40000057220459px);
-  //   width: 100%;
-  //   height: 100%;
-  //   left: 0;
-  //   right: 0;
-  //   opacity: 70%;
-  // }
 
   &:hover {
     transform: rotate(15deg);
@@ -411,6 +443,8 @@
   pointer-events: none;
   img {
     mix-blend-mode: plus-lighter;
+    z-index: 1;
+    position: relative;
   }
 }
 
@@ -418,29 +452,45 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  display: none;
-  transition: 0.5s;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+
   &__overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.8s ease;
   }
-
   &.opened {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
+
+    .qr-modal__overlay {
+      opacity: 1;
+    }
+
     .qr-modal__content {
-      top: 50%;
-      left: 50%;
+      opacity: 1;
+      transform: translate(-50%, -50%);
     }
   }
 
   &__content {
     position: absolute;
-    top: -50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background: #ffffff;
+    top: 50%;
+
+    /* Start above center */
+    transform: translate(-50%, -60%);
+    opacity: 0;
+
+    transition: transform 0.35s ease, opacity 0.35s ease;
+
+    background: white;
     border-radius: 20px;
     width: 90%;
     max-width: 635px;

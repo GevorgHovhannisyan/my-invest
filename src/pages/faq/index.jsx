@@ -1,10 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import "../../assets/scss/pages/faq/faq.scss";
 import Header from "../../components/header";
+import { FormattedMessage } from "react-intl";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { languageSelector } from "../../redux/slices/langauge/langauge";
 
 const Faq = () => {
   const [hovered, setHovered] = useState(false);
   const [openedFaq, setOpenedFaq] = useState({});
+  const [faqList, setFaqList] = useState([]);
+  const lang = useSelector(languageSelector); // "hy" | "en" | "ru"
+  const contentRef = useRef(null);
 
   const useMediaQuery = (query) => {
     const [matches, setMatches] = useState(window.matchMedia(query).matches);
@@ -35,51 +42,34 @@ const Faq = () => {
       <img
         src={imageSrc}
         alt="Responsive Hero"
-        class="hero__img hero__img--left-z"
+        className="hero__img hero__img--left-z"
       />
     );
   };
 
-  const faqQuestions = [
-    {
-      id: 1,
-      title: "Ինչպե՞ս սկսել ներդրումներ MyInvest-ով",
-      answer:
-        "Պետք է բացել հաշիվ, ընտրել ներդրումային ուղղություն և սկսել համալրել։",
-    },
-    {
-      id: 2,
-      title: "Ի՞նչ է պետք՝ հաշիվ բացելու համար",
-      answer:
-        "Պետք է բացել հաշիվ, ընտրել ներդրումային ուղղություն և սկսել համալրել։",
-    },
+  const fetchFaqs = async (lang) => {
+    try {
+      const { data } = await axios.get(
+        "https://investmentsproxy.test.ameriabank.am/api/FAQ/get-faqs",
 
-    {
-      id: 3,
-      title: "Ինչպե՞ս սկսել ներդրումներ MyInvest-ով",
-      answer:
-        "Պետք է բացել հաշիվ, ընտրել ներդրումային ուղղություն և սկսել համալրել։",
-    },
-    {
-      id: 4,
-      title: "Ի՞նչ է պետք՝ հաշիվ բացելու համար",
-      answer:
-        "Պետք է բացել հաշիվ, ընտրել ներդրումային ուղղություն և սկսել համալրել։",
-    },
+        {
+          headers: {
+            Token:
+              "6545D1D8F7DB428C84E988F504FFC75E997EC8A4329F4D6C91CD1DB7C96C5670",
+            Language: lang,
+          },
+        }
+      );
+      console.log("data", data);
+      setFaqList(data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
-    {
-      id: 5,
-      title: "Ինչպե՞ս սկսել ներդրումներ MyInvest-ով",
-      answer:
-        "Պետք է բացել հաշիվ, ընտրել ներդրումային ուղղություն և սկսել համալրել։",
-    },
-    {
-      id: 6,
-      title: "Ի՞նչ է պետք՝ հաշիվ բացելու համար",
-      answer:
-        "Պետք է բացել հաշիվ, ընտրել ներդրումային ուղղություն և սկսել համալրել։",
-    },
-  ];
+  useEffect(() => {
+    fetchFaqs(lang);
+  }, []);
 
   return (
     <div className="faq-parent loaded">
@@ -95,59 +85,60 @@ const Faq = () => {
           {/* <img
             src="/images/faq-question-left.png"
             alt="question"
-            class="hero__img hero__img--left"
+            className="hero__img hero__img--left"
           /> */}
         </div>
         <div className="text-block">
           <div className="faq-title">
-            Հաճախ տրվող <span>հարցեր</span>
+            <FormattedMessage id="faq_title" />{" "}
+            <span>
+              <FormattedMessage id="faq_title_green" />
+            </span>
           </div>
           <div className="description">
-            Ամեն ինչ՝ ներդրումների, հաշվի բացման, համալրման, հարկերի և մեր
-            հարթակի օգտագործման մասին
+            <FormattedMessage id="faq_text" />
           </div>
         </div>
         <img
           src="/images/faq-question-right.png"
           alt="exclamation"
-          class="hero__img--right"
+          className="hero__img--right"
         />
       </div>
       <div className="container faq-page-container">
         <div className="faq-page">
           <div className="list">
             <ul>
-              {faqQuestions.map((faq) => {
-                const contentRef = useRef(null);
-                const isOpen = openedFaq[faq.id] || false;
+              {faqList?.map((faq, index) => {
+                const isOpen = openedFaq[index] || false;
 
                 return (
                   <li
-                    onMouseEnter={() => setHovered(faq.id)}
+                    onMouseEnter={() => setHovered(index)}
                     onMouseLeave={() => setHovered(false)}
                     onClick={() =>
                       setOpenedFaq((prev) => ({
                         ...prev,
-                        [faq.id]: !prev[faq.id],
+                        [index]: !prev[index],
                       }))
                     }
                     className={`faq-list-item ${
-                      openedFaq[faq.id] ? "opened" : ""
+                      openedFaq[index] ? "opened" : ""
                     }`}
                   >
                     <div className="head">
                       <div className="question-block">
                         <img
                           src={`/images/icons/${
-                            hovered === faq.id && !openedFaq[faq.id]
+                            hovered === index && !openedFaq[index]
                               ? "faq-hover"
-                              : openedFaq[faq.id]
+                              : openedFaq[index]
                               ? "faq-opened"
                               : "faq"
                           }.svg`}
                           alt=""
                         />
-                        <span className="question">{faq.title}</span>
+                        <span className="question">{faq.question}</span>
                       </div>
                       <div className="expand-btn">
                         <svg

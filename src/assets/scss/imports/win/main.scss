@@ -56,7 +56,7 @@
       background: white;
       border-top-left-radius: 18px;
       border-bottom-left-radius: 18px;
-text-align: start;
+      text-align: start;
       @include mediaTo($size1366) {
         padding: 32px 0 32px 32px;
         flex: 2 1 0;
@@ -134,8 +134,8 @@ text-align: start;
     .card-btn {
       display: flex;
       align-items: center;
-      background: #7cc24b;
-      color: #fff;
+      background: #6dc719;
+      color: #000000;
       font-size: 22px;
       padding: 16px 44px;
       border: none;
@@ -197,6 +197,9 @@ text-align: start;
       background: white;
       border-top-right-radius: 18px;
       border-bottom-right-radius: 18px;
+
+      transition: scale 0.5s ease;
+
       img {
         &.mobile-win-image {
           display: none;
@@ -246,7 +249,6 @@ text-align: start;
     .card:hover {
       .card-image-block {
         scale: 1.1;
-        transition: 0.5s;
       }
     }
 

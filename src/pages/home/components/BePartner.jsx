@@ -1,62 +1,172 @@
 import { FormattedMessage } from "react-intl";
 
 const BePartner = () => {
-  const partners = [
+  const partnersHalf = [
     {
       title: "Tesla",
       ticker: "TSLA",
       change: 82,
       price: 470,
-      icon: "tesla",
+      icon: "tsla",
     },
     {
       title: "Apple",
       ticker: "AAPL",
       change: 82,
       price: 470,
-      icon: "apple",
+      icon: "aapl",
     },
     {
       title: "Microsoft",
       ticker: "MSFT",
       change: 82,
       price: 470,
-      icon: "microsoft",
+      icon: "msft",
     },
     {
       title: "NVIDIA",
       ticker: "NVDA",
       change: 82,
       price: 470,
-      icon: "nvidia",
+      icon: "nvda",
     },
     {
       title: "Netflix",
       ticker: "NFLX",
       change: -82,
       price: 470,
-      icon: "netflix",
+      icon: "nflx",
     },
+
+    {
+      title: "Comcast",
+      ticker: "CMCSA",
+      change: 82,
+      price: 470,
+      icon: "cmcsa",
+    },
+    {
+      title: "Intel",
+      ticker: "INTC",
+      change: 82,
+      price: 470,
+      icon: "intc",
+    },
+    {
+      title: "Palantir",
+      ticker: "PLTR",
+      change: 82,
+      price: 470,
+      icon: "pltr",
+    },
+
+     {
+      title: "SMCI",
+      ticker: "SMCI",
+      change: 82,
+      price: 470,
+      icon: "smci",
+    },
+
+     {
+      title: "Synopsys",
+      ticker: "SNPS",
+      change: 82,
+      price: 470,
+      icon: "snps",
+    },
+    
+     {
+      title: "VOO",
+      ticker: "VOO",
+      change: 82,
+      price: 470,
+      icon: "voo",
+    },
+  ];
+
+  const partnersSecHalf = [
     {
       title: "Tesla",
       ticker: "TSLA",
       change: 82,
       price: 470,
-      icon: "tesla",
+      icon: "tsla",
+    },
+       {
+      title: "Microsoft",
+      ticker: "MSFT",
+      change: 82,
+      price: 470,
+      icon: "msft",
     },
     {
       title: "Apple",
       ticker: "AAPL",
       change: 82,
       price: 470,
-      icon: "apple",
+      icon: "aapl",
     },
+ 
     {
       title: "NVIDIA",
       ticker: "NVDA",
       change: 82,
       price: 470,
-      icon: "nvidia",
+      icon: "nvda",
+    },
+    {
+      title: "Netflix",
+      ticker: "NFLX",
+      change: -82,
+      price: 470,
+      icon: "nflx",
+    },
+
+    {
+      title: "Comcast",
+      ticker: "CMCSA",
+      change: 82,
+      price: 470,
+      icon: "cmcsa",
+    },
+    {
+      title: "Intel",
+      ticker: "INTC",
+      change: 82,
+      price: 470,
+      icon: "intc",
+    },
+    {
+      title: "Palantir",
+      ticker: "PLTR",
+      change: 82,
+      price: 470,
+      icon: "pltr",
+    },
+
+     {
+      title: "SMCI",
+      ticker: "SMCI",
+      change: 82,
+      price: 470,
+      icon: "smci",
+    },
+
+     {
+      title: "Synopsys",
+      ticker: "SNPS",
+      change: 82,
+      price: 470,
+      icon: "snps",
+    },
+    
+     {
+      title: "VOO",
+      ticker: "VOO",
+      change: 82,
+      price: 470,
+      icon: "voo",
     },
   ];
   return (
@@ -67,33 +177,20 @@ const BePartner = () => {
           <FormattedMessage id="be_partner_title" />
         </div>
         <button className="bordered">
-          Որոնել արժեթղթեր{" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="15"
-            viewBox="0 0 14 15"
-            fill="none"
-          >
-            <path
-              d="M-2.16962e-06 7.5L12 7.5M12 7.5L6.33333 13.5M12 7.5L6.33333 1.5"
-              stroke="#72BF44"
-              stroke-width="2"
-            />
-          </svg>
+          Որոնել արժեթղթեր <span className="icon-arrow-right-after"></span>
         </button>
       </div>
 
       <div className="partner-slider">
         <div className="partner-row top">
           <ul className="partners-slide-list">
-            {partners.map((partner, index) => {
+            {partnersHalf.map((partner, index) => {
               return (
                 <li key={index}>
                   <div className="partner-info">
                     <div className="logo-partner">
                       <img
-                        src={`/images/be-partner/${partner.icon}.png`}
+                        src={`/images/stocks/${partner.icon}.svg`}
                         alt={partner.title}
                       />
                     </div>
@@ -103,7 +200,7 @@ const BePartner = () => {
                     </div>
                   </div>
 
-                  <div className="partner-change">
+                  {/* <div className="partner-change">
                     <span
                       className={`change ${
                         partner.change >= 0 ? "green" : "red"
@@ -115,7 +212,7 @@ const BePartner = () => {
                       %
                     </span>
                     <span className="price">${partner.price}</span>
-                  </div>
+                  </div> */}
                 </li>
               );
             })}
@@ -123,13 +220,13 @@ const BePartner = () => {
         </div>
         <div className="partner-row bottom">
           <ul className="partners-slide-list">
-            {partners.map((partner, index) => {
+            {partnersSecHalf.map((partner, index) => {
               return (
                 <li key={index}>
                   <div className="partner-info">
                     <div className="logo-partner">
                       <img
-                        src={`/images/be-partner/${partner.icon}.png`}
+                        src={`/images/stocks/${partner.icon}.svg`}
                         alt={partner.title}
                       />
                     </div>
@@ -139,7 +236,7 @@ const BePartner = () => {
                     </div>
                   </div>
 
-                  <div className="partner-change">
+                  {/* <div className="partner-change">
                     <span
                       className={`change ${
                         partner.change >= 0 ? "green" : "red"
@@ -151,7 +248,7 @@ const BePartner = () => {
                       %
                     </span>
                     <span className="price">${partner.price}</span>
-                  </div>
+                  </div> */}
                 </li>
               );
             })}

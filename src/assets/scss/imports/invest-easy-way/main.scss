@@ -140,6 +140,10 @@
       }
     }
 
+    &:hover .play-btn {
+      background-color: #2e2e2e38 !important;
+    }
+
     @include mediaTo($size1200) {
       display: block;
     }
@@ -184,6 +188,8 @@
         position: absolute;
         right: 24px;
         top: 24px;
+        transition: 0.3s;
+
         @include mediaTo($size1600) {
           padding: 10.63px;
         }
@@ -251,17 +257,25 @@
     button {
       display: flex;
       align-items: center;
-      padding: 12px 20px 12px 24px;
+      color: #000000;
+      background-color: #6dc719;
+      font-size: 22px;
+      border: none;
       border-radius: 12px;
-      border: 2px solid rgba(114, 191, 68, 0.3);
-      color: var(--Brand-500, #72bf44);
+      padding: 15px 16px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      transition: background 0.2s;
+      margin: 35px auto;
       font-size: 14px;
-      font-style: normal;
-      line-height: 35px;
-      letter-spacing: 1.82px;
+      line-height: 24px;
       text-transform: uppercase;
-      font-family: $semibold;
-      background: var(--Gray-WEB-UI-100, #f5f5f5);
+      letter-spacing: 2px;
+
+      &:hover {
+        background: #61a527;
+      }
 
       span {
         padding: 6px;

@@ -33,7 +33,7 @@
   }
   .anim-block {
     position: relative;
-    z-index: 9999;
+    z-index: 1;
     background: black;
     border-radius: 8px;
   }

@@ -6,28 +6,31 @@ const WinBlock = () => {
     <div className="win-block container">
       <div className="win-container">
         <ul className="win-home-portfel">
-          <li class="card">
-            <div class="card-content">
+          <li className="card">
+            <div className="card-content">
               <div className="parent-anim">
-                <div class="card-left">
-                  <div class="card-label ">
-                    ԿԱՏԱՐԻ՛Ր ԳՈՐԾԱՐՔՆԵՐ
+                <div className="card-left">
+                  <div className="card-label ">
+                    <FormattedMessage id="win_block_label" />
                     <div className="action-line"></div>
                   </div>
-                  <div class="card-title">
-                    Շահիր՝ տուն <br />
-                    <span>Երևանում</span>
+                  <div className="card-title">
+                    <FormattedMessage id="win_block_label" />
+                    <br />
+                    <span>
+                      {" "}
+                      <FormattedMessage id="win_block_subtitle" />
+                    </span>
                   </div>
-                  <div class="card-description ">
-                    Ստացիր պրոմո կոդ ամեն գործարքից և մասնակցիր տան
-                    խաղարկությանը
+                  <div className="card-description ">
+                    <FormattedMessage id="win_block_description" />
                   </div>
-                  <button class="card-btn">
+                  <button className="card-btn">
                     <FormattedMessage id="open_account_btn" />
                     <span className="icon-arrow-right"></span>
                   </button>
                 </div>
-                <div class="card-image-block left">
+                <div className="card-image-block left">
                   <img
                     className="web-win-image"
                     src="/images/win-block/home.png"
@@ -42,28 +45,27 @@ const WinBlock = () => {
               </div>
             </div>
           </li>
-          <li class="card">
-            <div class="card-content">
+          <li className="card">
+            <div className="card-content">
               <div className="parent-anim">
-                <div class="card-left">
-                  <div class="card-label ">
-                    ԿԱՏԱՐԻ՛Ր ԳՈՐԾԱՐՔՆԵՐ
+                <div className="card-left">
+                  <div className="card-label ">
+                    Բացի՛ր բրոքերային հաշիվ
                     <div className="action-line"></div>
                   </div>
-                  <div class="card-title">
-                    Շահիր՝ տուն <br />
-                    <span>Երևանում</span>
+                  <div className="card-title">
+                    Շահիր՝ ներդրումային <br />
+                    <span>պորտֆել</span>
                   </div>
-                  <div class="card-description mardoto">
-                    Ստացիր պրոմո կոդ ամեն գործարքից և մասնակցիր տան
-                    խաղարկությանը
+                  <div className="card-description mardoto">
+                    1 հատ 1,000,000֏ և 2 հատ 500,000֏ պորտֆելների խաղարկություն
                   </div>
-                  <button class="card-btn">
-                    Բացել Հաշիվ
+                  <button className="card-btn">
+                    <FormattedMessage id="open_account_btn" />
                     <span className="icon-arrow-right"></span>
                   </button>
                 </div>
-                <div class="card-image-block right">
+                <div className="card-image-block right">
                   <img
                     className="web-win-image"
                     src="/images/win-block/win-invest.png"

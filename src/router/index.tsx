@@ -8,6 +8,7 @@ import {
 
 import HomePage from "../pages/home";
 import Faq from "../pages/faq";
+import HelpLinks from "../pages/help-links";
 
 const Routers = () => {
   return (
@@ -15,6 +16,7 @@ const Routers = () => {
       <Routes>
         <Route path="/" key="home" element={<HomePage />} />
         <Route path="/faq" key="faq" element={<Faq />} />
+        <Route path="/links" key="links" element={<HelpLinks />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

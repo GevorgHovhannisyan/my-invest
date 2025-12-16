@@ -54,14 +54,7 @@ export const LanguageSwitcher = ({ lang }) => {
     dispatch(setLanguage(lang));
   };
 
-  const getUrl = () => {
-    // lang_val
-    return "/";
-    // const lang_switcher = lang_val;
-    // const mainPath = getRouteMain();
-    // const replacer = lang_switcher === LanguageTransCodes.AM ? '' : mainPath + lang_switcher;
-    // return lang ? pathname.replace(mainPath + lang, replacer) : pathname.replace(mainPath, replacer + mainPath);
-  };
+  const getUrl = () =>  ""
 
   return (
     <div className={`lg_block ${opened ? "opened" : ""}`}>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
+import JotFormEmbed from "../form";
 
 const Footer = () => {
   const useMediaQuery = (query) => {
@@ -41,16 +43,20 @@ const Footer = () => {
             <li className="help-links">
               <div className="links">
                 <span className="f-title">Օգտակար հղումներ </span>
-                <a href="#">
-                  Պայմաններ, սակագներ և այլն{" "}
+                <a href="/links" target="_blank">
+                  Պայմաններ, սակագներ և այլն
                   <span className="icon-arrow-right"></span>
                 </a>
               </div>
               <div className="contacts">
                 <span className="f-title">Կապ մեզ հետ</span>
                 <ul className="contact-item">
-                  <li>+374 10 51 31 69</li>
-                  <li>+374 10 51 31 70</li>
+                  <li>
+                    <a href="tel:+37410513169">+374 10 51 31 69</a>
+                  </li>
+                  <li>
+                    <a href="tel:+37410513170">+374 10 51 31 70</a>
+                  </li>
                 </ul>
               </div>
             </li>
@@ -61,7 +67,7 @@ const Footer = () => {
               </div>
 
               <div className="qr-block">
-                <div class="qr">
+                <div className="qr">
                   <div className="anim-block">
                     <img src="/images/footer/qr-code-black.png" alt="QR Code" />
                   </div>
@@ -90,12 +96,13 @@ const Footer = () => {
               <div className="f-description">
                 Բաց մի թող ներդրումների վերաբերյալ վերջին նորությունները:
               </div>
+              <JotFormEmbed />
               <form
-                class="input-with-icon"
+                className="input-with-icon"
                 role="search"
                 onsubmit="event.preventDefault(); alert('submitted: ' + q.value)"
               >
-                <label for="q" class="visually-hidden">
+                <label for="q" className="visually-hidden">
                   Search
                 </label>
                 <input
@@ -105,7 +112,7 @@ const Footer = () => {
                   placeholder="Տեքստ..."
                   autocomplete="off"
                 />
-                <button class="icon-btn" type="submit" aria-label="Submit">
+                <button className="icon-btn" type="submit" aria-label="Submit">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -124,13 +131,25 @@ const Footer = () => {
               <div className="socials">
                 <ul>
                   <li>
-                    <span className="icon-facebook"></span>
+                    <a
+                      href="https://www.facebook.com/Ameriabank"
+                      target="_blank"
+                    >
+                      <span className="icon-facebook"></span>
+                    </a>
                   </li>
                   <li>
-                    <span className="icon-instagram"></span>
+                    <a
+                      href="https://www.instagram.com/ameriabank/"
+                      target="_blank"
+                    >
+                      <span className="icon-instagram"></span>
+                    </a>
                   </li>
                   <li>
-                    <span className="icon-telegram"></span>
+                    <a href="https://t.me/myinvest_blog" target="_blank">
+                      <span className="icon-telegram"></span>
+                    </a>
                   </li>
                 </ul>
               </div>

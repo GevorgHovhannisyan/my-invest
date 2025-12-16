@@ -114,6 +114,11 @@
       border-bottom: 2px solid rgba(255, 255, 255, 0.1);
       max-width: 288px;
       cursor: pointer;
+      &:hover {
+        span {
+          color: #72bf44;
+        }
+      }
       span {
         color: rgba(255, 255, 255, 0.7);
         font-family: $semibold;
@@ -128,6 +133,10 @@
           line-height: 24px;
           letter-spacing: 1.56px;
         }
+      }
+
+      svg {
+        color: #72bf44;
       }
 
       @include mediaTo($size896) {
@@ -285,11 +294,23 @@
       display: flex;
       flex-direction: column;
       .whtf {
+        position: relative;
         width: 106px;
         height: 109px;
         background: rgba(114, 191, 68, 0.11);
         border-radius: 50%;
-        // transition: 0.1s;
+        transition: border-radius 0.4s ease; // smooth animation
+
+        .border {
+          height: 3px;
+          background: #72bf44;
+          position: absolute;
+          top: -3px;
+          left: 0;
+          width: 100%;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
       }
     }
     .bottom-part {
@@ -327,13 +348,13 @@
     }
 
     &:hover {
-      ul {
-        // margin-top: -3px;
-      }
       .whtf {
-        border-top: 3px solid #72bf44;
+        // transition: 1s;
         border-radius: 5px 5px 0 0;
-        margin-top: -3px;
+      }
+      .border {
+        // transition: 0.5;
+        opacity: 1 !important;
       }
     }
   }

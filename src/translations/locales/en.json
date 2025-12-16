@@ -1,7 +1,7 @@
 {
   "hero_section_title": "Investments ",
-  "hero_section_your": "in your ",
-  "hero_section_app": "app",
+  "hero_section_your": "at ",
+  "hero_section_app": "hand",
   "hero_section_text": "Join a community of smart investors and build your financial success with MyInvest’s low fees and reliable service.",
 
   "download_btn": "Download",
@@ -61,7 +61,7 @@
   "telegram_item1": "Educational materials",
   "telegram_item2": "Ideas and advice from experts",
   "telegram_item3": "Investment market overview in numbers",
-  "telegram_btn": "Join",
+  "telegram_btn": "Join our Telegram",
 
   "academy_title": "MyInvest Academy",
   "academy_subtitle": "Learn investments from scratch",
@@ -91,7 +91,8 @@
   "advantage_item6_title": "Deposit and withdrawal",
   "advantage_item6_text": "24/7 deposit and withdrawal of funds without commission",
 
-  "faq_title": "Frequently Asked Questions",
+  "faq_title": "Frequently Asked ",
+  "faq_title_green": "Questions",
   "faq_text": "Everything about investments, account opening, deposits, taxes, and using our platform",
   "faq_btn": "All questions",
 
@@ -104,5 +105,6 @@
   "academy_join_btn": "Join Ameria Academy",
   "why_invest_subtitle": "Our advantages",
   "view_video_guide": "view video guide",
-  "be_partner_title": "Become a partner of the company"
+  "be_partner_title": "Become a partner of the company",
+  "year": "year"
 }

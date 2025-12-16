@@ -10,6 +10,7 @@ const HowToBuy = () => {
   });
 
   const [animating, setAnimating] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   const slideRef = useRef(null);
   const btnRef = useRef(null);
@@ -275,26 +276,28 @@ const HowToBuy = () => {
     };
   }, []);
 
-  const stockItem = (stock) => {
+  const stockItem = (stock, isin) => {
     if (stock) {
       return (
         <>
           <div className="stock">
-            <div class="stock-qr">
+            <div className="stock-qr">
               <div className="stock-anim-block">
                 <div className="stock-info">
                   <div className="icon">
                     <img src={`/images/how-to-buy/${stock}.png`} alt={stock} />
                   </div>
                   <div className="info">
-                    <div className="name">{stock}</div>
-                    <div className="ticker">MSFT</div>
+                    <div className="name">
+                      {stock.charAt(0).toUpperCase() + stock.slice(1)}
+                    </div>
+                    <div className="ticker">{isin}</div>
                   </div>
                 </div>
 
                 <div className="price-info">
-                  <div className="price">+82%</div>
                   <div className="change">$470.38</div>
+                  <div className="price">+82%</div>
                 </div>
               </div>
             </div>
@@ -352,9 +355,9 @@ const HowToBuy = () => {
             )}
         </div>
         <div className="matrix">
-          <ul class="items">
+          <ul className="items">
             <li className="matrix-item htb">
-              <div class="text-block">
+              <div className="text-block">
                 <div className="subtitle">
                   <FormattedMessage id="how_to_buy_subtitle" />
                 </div>
@@ -365,7 +368,11 @@ const HowToBuy = () => {
                   </span>{" "}
                   <FormattedMessage id="how_to_buy_title_p3" />
                 </div>
-                <div className="view-video">
+                <div
+                  className="view-video"
+                  onMouseEnter={() => setHovered(true)}
+                  onMouseLeave={() => setHovered(false)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -375,7 +382,7 @@ const HowToBuy = () => {
                   >
                     <path
                       d="M7 17.3369V6.94566C7 5.71973 8.3908 5.01149 9.38226 5.73255L17.1757 11.4005C18.0426 12.031 17.9876 13.3409 17.0709 13.8964L9.27745 18.6197C8.27779 19.2256 7 18.5059 7 17.3369Z"
-                      stroke="white"
+                      stroke={hovered ? "#72BF44" : "white"}
                       stroke-opacity="0.7"
                       stroke-width="2"
                     />
@@ -456,6 +463,7 @@ const HowToBuy = () => {
                       <div className="no-text"></div>
                     </li>
                     <li className="whtf">
+                      <div className="border"></div>
                       <img src="/images/how-to-buy/trade-candle.svg" alt="" />
                       <div className="text-under">Ինչ գնել</div>
                     </li>
@@ -478,7 +486,7 @@ const HowToBuy = () => {
                   <FormattedMessage id="how_to_buy_step" /> 4
                 </div>
                 <div className="description">
-                  Ընտրիր արժեթուղթ առկա ցանկերից
+                  <FormattedMessage id="how_to_buy_step_4" />
                 </div>
               </div>
               <div className="bottom-part">
@@ -491,7 +499,7 @@ const HowToBuy = () => {
 
                   <div className="stock-row row-1 row-1-elem-2">
                     {stockItem()}
-                    {stockItem("microsoft")}
+                    {stockItem("microsoft", "MSFT")}
                     {stockItem()}
                   </div>
                   <div className="stock-row row-1 row-1-elem-3">
@@ -505,7 +513,7 @@ const HowToBuy = () => {
                 <div className="top-block bottom">
                   <div className="stock-row row-2 row-2-elem-1">
                     {stockItem()}
-                    {stockItem("apple")}
+                    {stockItem("apple", "AAPL")}
                     {stockItem()}
                   </div>
                   <div className="stock-row row-2 row-2-elem-2">
@@ -515,7 +523,7 @@ const HowToBuy = () => {
                   </div>
                 </div>
 
-                {/* <div class="stock-qr">
+                {/* <div className="stock-qr">
                   <div className="stock-anim-block"></div>
                 </div> */}
               </div>
@@ -555,7 +563,10 @@ const HowToBuy = () => {
                       />
                     </div>
                     <div className="buy-bought">
-                      <div className="buy-text">Գնել</div>
+                      <div className="buy-text">
+                        {" "}
+                        <FormattedMessage id="how_to_buy_buy" />
+                      </div>
                       <div className="bought">Գնված է</div>
                     </div>
                   </div>
@@ -568,8 +579,11 @@ const HowToBuy = () => {
         </div>
         <div className="transactions-fees ">
           <img src="/images/faq-icon.svg" alt="" />
-          Գործարքների միջնորդավճարներին կարող ես ծանոթանալ{" "}
-          <a href="#"> այստեղ</a>
+          <FormattedMessage id="how_to_buy_fees" />{" "}
+          <a href="#">
+            {" "}
+            <FormattedMessage id="how_to_buy_fees_here" />
+          </a>
         </div>
       </div>
     </div>

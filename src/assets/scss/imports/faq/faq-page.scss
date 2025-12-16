@@ -1,7 +1,8 @@
 .faq-parent {
   .faq-page-container {
     max-width: 1008px;
-
+    z-index: 2;
+    position: relative;
     @include mediaTo($size1366) {
       max-width: 782px;
     }
@@ -26,7 +27,7 @@
     padding-bottom: 75px;
     padding-top: 57px;
     position: relative;
-    z-index: 999;
+    z-index: 1;
   }
 
   .faq-title {
@@ -78,14 +79,15 @@
       right: -100px;
     }
   }
-}
 
-.hero__img--left-z {
-  position: absolute;
-  @include mediaTo($size1366) {
-    left: -100px;
+  .hero__img--left-z {
+    position: absolute;
+    @include mediaTo($size1366) {
+      left: -100px;
+    }
   }
 }
+
 .faq-page {
   margin-top: 104px;
   .list {
@@ -197,7 +199,7 @@
 
       .content-inner {
         font-family: $regularMar;
-        padding: 8px 0 0 48px;
+        padding: 8px 0 0 36px;
 
         opacity: 0;
         transform: translateY(20px);

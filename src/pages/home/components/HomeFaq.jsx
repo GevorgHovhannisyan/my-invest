@@ -1,26 +1,41 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import { languageSelector } from "../../../redux/slices/langauge/langauge";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const HomeFaq = () => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const [openedFaq, setOpenedFaq] = useState({});
+  const lang = useSelector(languageSelector); // "hy" | "en" | "ru"
+  const [faqList, setFaqList] = useState([]);
+  const contentRef = useRef(null);
 
-  const faqQuestions = [
-    {
-      id: 1,
-      title: "Ինչպե՞ս սկսել ներդրումներ MyInvest-ով",
-      answer:
-        "Պետք է բացել հաշիվ, ընտրել ներդրումային ուղղություն և սկսել համալրել։",
-    },
-    {
-      id: 2,
-      title: "Ի՞նչ է պետք՝ հաշիվ բացելու համար",
-      answer:
-        "Պետք է բացել հաշիվ, ընտրել ներդրումային ուղղություն և սկսել համալրել։",
-    },
-  ];
+  const fetchFaqs = async (lang) => {
+    try {
+      const { data } = await axios.get(
+        "https://investmentsproxy.test.ameriabank.am/api/FAQ/get-faqs",
+
+        {
+          headers: {
+            Token:
+              "6545D1D8F7DB428C84E988F504FFC75E997EC8A4329F4D6C91CD1DB7C96C5670",
+            Language: lang,
+          },
+        }
+      );
+      console.log("data", data);
+      setFaqList(data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFaqs(lang);
+  }, []);
 
   return (
     <div className="container home-faq">
@@ -40,59 +55,46 @@ const HomeFaq = () => {
             <FormattedMessage id="faq_text" />
           </div>
           <div className="all-questions">
-            <button className="bordered" onClick={() => navigate("/faq")}>
+            <button className="" onClick={() => navigate("/faq")}>
               <span>
                 <FormattedMessage id="faq_btn" />
               </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="25"
-                viewBox="0 0 24 25"
-                fill="none"
-              >
-                <path
-                  d="M6 12.5L18 12.5M18 12.5L12.3333 18.5M18 12.5L12.3333 6.5"
-                  stroke="#72BF44"
-                  stroke-width="2"
-                />
-              </svg>
+              <span className="icon-arrow-right-after"></span>
             </button>
           </div>
         </div>
         <div className="right">
           <ul>
-            {faqQuestions.map((faq) => {
-              const contentRef = useRef(null);
-              const isOpen = openedFaq[faq.id] || false;
+            {faqList.map((faq, index) => {
+              const isOpen = openedFaq[index] || false;
 
               return (
                 <li
-                  onMouseEnter={() => setHovered(faq.id)}
+                  onMouseEnter={() => setHovered(index)}
                   onMouseLeave={() => setHovered(false)}
                   onClick={() =>
                     setOpenedFaq((prev) => ({
                       ...prev,
-                      [faq.id]: !prev[faq.id],
+                      [index]: !prev[index],
                     }))
                   }
                   className={`faq-list-item ${
-                    openedFaq[faq.id] ? "opened" : ""
+                    openedFaq[index] ? "opened" : ""
                   }`}
                 >
                   <div className="head">
                     <div className="question-block">
                       <img
                         src={`/images/icons/${
-                          hovered === faq.id && !openedFaq[faq.id]
+                          hovered === index && !openedFaq[index]
                             ? "faq-hover"
-                            : openedFaq[faq.id]
+                            : openedFaq[index]
                             ? "faq-opened"
                             : "faq"
                         }.svg`}
                         alt=""
                       />
-                      <span className="question">{faq.title}</span>
+                      <span className="question">{faq.question}</span>
                     </div>
                     <div className="expand-btn">
                       <svg
