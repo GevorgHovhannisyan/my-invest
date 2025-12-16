@@ -31,6 +31,7 @@
     font-style: normal;
 }
 
+
 @font-face {
     font-family: 'montserrat-light';
     font-display: swap;
@@ -38,6 +39,15 @@
     url('../../fonts/Montserrat-Light/Montserrat-Light.otf') format('opentype'),
     url('../../fonts/Montserrat-Light/Montserrat-Light.woff') format('woff'),
     url('../../fonts/Montserrat-Light/Montserrat-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat-semibold';
+    font-display: swap;
+    src: url('../../fonts/Montserrat-SemiBold/Montserrat-SemiBold.woff2') format('woff2'),
+    url('../../fonts/Montserrat-SemiBold/Montserrat-SemiBold.ttf')  format('truetype');
     font-weight: normal;
     font-style: normal;
 }
